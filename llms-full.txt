@@ -1,93 +1,137 @@
 # DPA-SDT full reference
 
 ## Overview
-DPA-SDT is a fresh independent publication snapshot of a self-declared token and decentralized partnership research prototype.
-The repository is private and contains one initial commit without old history.
-It is not a GitHub fork and does not replace or alter the old source repository.
-Publishing it makes no hosting or blockchain changes.
-Author: Maxim Osovsky.
+Document partnership agreements, connect self-declarations, and track ERC-721 participation packages.
+DPA-SDT is a private source repository for a crypto-wallet partnership workspace and research prototype.
+Draft and review off-chain terms locally, record individual acceptance, and inspect participation packages.
+Author: Maxim Osovsky — https://www.linkedin.com/in/osovsky/
 Repository: https://github.com/maximosovsky/DPA-SDT
+Root README.md and these root discovery files describe the current local workflow.
 
-## Scope
-Use fictional inputs only.
-The SDT v2 commitment binds thirteen exact identity and bank-trace fields.
-Serialization is domain-separated SHA-256 with ordered named UTF-8 fields and uint32 big-endian byte lengths.
-No trimming, case conversion, Unicode normalization, or silent correction is performed.
-The existing cryptopassport domain separator is preserved intentionally.
-Self-declaration does not verify identity, banking activity, or legal rights.
-Partnership formation records EOA EIP-712 acceptance and immutable snapshots.
-Agreement text is maintained off-chain with portable evidence.
-Exclusive package issuance uses ERC-721 rather than legacy ERC-1155 backing.
-Package splitting burns parents without creating additional quantity.
-Sale, pledge, and funded loan flows are synthetic testnet experiments.
-Local tests use isolated simulated contracts and public development accounts.
-Do not use the public Hardhat development mnemonic on any public network.
-Never supply private keys, real identity documents, or real banking data to the interface.
+## Publication boundary
+This is an independent source snapshot, not a GitHub fork or a new blockchain execution.
+Source/UI names, domain separators, attribution, and historical URLs are retained.
+Public website: https://maximosovsky.github.io/Decentralized-Partnership-Agreements-DPA-Self-Declared-Tokens-SDT/
+The public website is compiled output maintained in a separate repository.
+Source-era Vercel test deployment: https://cryptopassport-testnet.vercel.app/
+This private checkout does not automatically publish either host or alter hosting settings.
+README preview docs/preview.png was captured from this checkout's production build without a connected wallet.
+
+## Features
+Agreement workspace: draft exact terms and ordered allocations locally, export evidence, review invitations.
+DPA: immutable agreement/version/allocation commitments and individual EOA EIP-712 acceptance.
+Signature context binds chain, contract, wallet, SDT, token, identity commitment, terms, allocation, and nonce.
+SDT: reusable self-declared identity basis; no independently verified identity or unique-person certificate.
+Exclusive package route: claim ERC-721 participation packages only after complete acceptance.
+Splitting burns parent packages, retains history, and conserves allocated quantity.
+Package experiments include sale, pledge, and funded test-ETH loans.
+Separate read-only verifier compares original declaration strings with historical acceptance snapshots.
+It checks supported canonical contracts, records, events, receipts, and EIP-712 context through RPC.
+It exports technical JSON/HTML reports without connecting a wallet.
+Pre-authenticated identification and contract-wallet acceptance are not implemented.
+
+## Thirteen-field SDT v2 commitment
+Algorithm: SHA-256.
+Domain separator: cryptopassport:SDT:identity:v2 followed by a null byte.
+Ordered fields: fullName, dateOfBirth, passportNumber, bankTransactionId, bankName, bankBic, bankAccountNumber, bankDate, bankTime, bankTimezone, bankAmount, bankCurrency, bankRecipient.
+Serialization: UTF-8 domain; uint32 big-endian field count; then uint32 big-endian byte lengths and exact UTF-8 bytes for each ordered field name and value.
+No trimming, case folding, Unicode normalization, or silent date/amount/time conversion.
+The helper validates required fields, nonempty valid strings, and the DD.MM.YYYY birth date.
+Existing domain and evidence schema identifiers are preserved intentionally.
+
+## Safety and scope
+Creation and transaction experiments use fictional fixtures and test ETH only.
+The separate read-only verifier can accept the thirteen original field strings, not only creation fixtures.
+Field strings are hashed locally and are not included in RPC queries.
+Reports omit the strings by default; opting in creates a sensitive downloaded copy.
+Clear removes in-memory inputs/reports, not previously downloaded files.
+Public unsalted hashes are guessable and are not encryption.
+Hash correspondence does not authenticate a person, bank record, or enforceable right.
+On-chain hashes cannot recover missing agreement documents; retain exact off-chain bytes.
+A matching acceptance snapshot does not by itself identify the hashing scheme.
+RPC failure or inconsistent/unknown contracts must not produce a positive conclusion.
+Base Sepolia observations are not proof of Ethereum L1 finality.
+No legal certification, court-admissibility guarantee, or production/mainnet readiness is claimed.
+Never commit credentials, original identity/bank inputs, sensitive reports, or signed raw transactions.
+Do not use publicly known local development accounts on public networks.
+Public-network deployment and transaction runners require separate authorization.
 
 ## Architecture
-All project files remain within test-deployment/.
-contracts/: Solidity contract implementations.
-client/: browser application entry points and styles.
-src/: hashing, agreement, evidence, state, and contract-provenance helpers.
-HTML pages: declaration, partnership, shares, packages, sale, verifier, and legal notices.
-test/: inherited node and Hardhat regression tests.
-scripts/: local and historical research runners; not automatically executed.
-canonical-artifacts/: six exact deployed ABI/bytecode JSON artifacts.
-docs/: specifications, threat model, test matrix, and evidence.
-package.json and package-lock.json: preserved dependency declarations.
+| Path | Role |
+| --- | --- |
+| test-deployment/client/ | Browser application entry points and styles |
+| test-deployment/src/ | Hashing, agreement documents, evidence, state and provenance helpers |
+| test-deployment/contracts/ | Solidity implementations |
+| test-deployment/*.html | Workspace, formation, participation, packages, sale, verifier and legal routes |
+| test-deployment/test/ | node:test / Hardhat / Chromium regressions |
+| test-deployment/scripts/ | Local checks and retained research runners |
+| test-deployment/canonical-artifacts/ | Six exact deployed artifacts pinned by SHA-256 |
+| test-deployment/docs/ | Specifications, threat model, test matrix and historical evidence |
+| docs/preview.png | Current local production-build preview |
+| PROVENANCE.md, snapshot-manifest.json | Original copied snapshot provenance, not later documentation hashes |
+| VERIFICATION.md | Preserved historical verification record |
 
-## Dependencies
-Node.js >=22.13; tested publication environment used Node.js 26.7.0.
-TypeScript 5.9.3.
-Solidity compiler 0.8.28.
-OpenZeppelin contracts 5.4.0.
-Hardhat 3.19.0.
-Vite 7.3.7.
-viem 2.57.6.
-Playwright 1.64.1.
+## Dependencies and networks
+Node.js >=22.13 and npm; current checks used Node.js 26.7.0 and npm 11.19.0.
+TypeScript 5.9.3; Vite 7.3.7; viem 2.57.6.
+Solidity 0.8.28; OpenZeppelin Contracts 5.4.0; Hardhat 3.19.0.
+Playwright 1.64.1 with Chromium.
+Base Sepolia chain ID 84532; ephemeral local Hardhat chain ID 31337.
+The read-only verifier allows local chain 31337 only on localhost/127.0.0.1.
+No wallet key, RPC credential, environment variables, or backend is needed for the static build.
 
-## Local commands
-cd test-deployment
-npm ci --ignore-scripts
-npm run compile
-node --experimental-strip-types --test test/identity-hash-v2.test.ts
-npm run build
-npm run dev -- --port 4173 --strictPort
+## Local workflow
+Authenticated clone: git clone https://github.com/maximosovsky/DPA-SDT.git
+Working directory: cd DPA-SDT/test-deployment
+Install: npm ci
+Browser prerequisite: npx playwright install chromium
+Prepare compiled artifacts: npm run build
+Development server: npm run dev -- --port 4173 --strictPort
 Local UI: http://127.0.0.1:4173/
-Compile before building a fresh checkout; six pinned artifacts alone are insufficient.
-No wallet key or RPC credential is needed for the static build.
-The inherited npm test:hash script names a missing old file; use the explicit v2 command.
+Use another free port if 4173 is occupied; do not stop an unrelated listener.
+Full suite: npm test
+Hash helper suite: npm run test:hash
+Production build: npm run build
+Standalone compilation: npm run compile
+npm test invokes pretest, which builds its fixtures automatically.
+npm run build compiles all imported contracts, checks/installs six pinned artifacts, then runs vite build.
+Build output: test-deployment/dist/.
 
-## Verification
-Hash helper: 4 passed, 0 failed.
-Focused contract/provenance files: 31 passed, 0 failed.
-Full inherited npm test: 159 passed, 67 failed.
-Compilation succeeded for 14 Solidity files.
-Production build succeeded after compilation.
-Full-suite failures remain disclosed; they were not silently removed or called passing.
-Some inherited tests expect removed archives or stale UI/navigation details.
-See VERIFICATION.md for actual commands, failures, and warnings.
+## Current local verification
+npm ci completed; npm audit reported zero vulnerabilities at that run.
+Chromium installation completed.
+npm test: 234 passing / 0 failing, including Chromium checks.
+npm run test:hash: 4 passing / 0 failing, no skipped tests.
+npm run build succeeded.
+Hardhat reported a pre-existing hre.network.connect() deprecation warning.
+These checks are local, not a rerun of historical public-network scenarios.
+VERIFICATION.md retains older verification outcomes and is not rewritten by this README update.
+Source-era documents and nested discovery files can retain obsolete naming or workflow descriptions.
 
 ## Historical evidence
 Retained: test-deployment/docs/evidence/base-sepolia/published-nine/.
 Retained: test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/.
 Final-nine manifest: nine scenarios and 31 distinct successful receipt hashes.
-Do not restate this bundle as 30 transactions.
-Recorded provider: controlled Playwright EIP-1193 test-wallet adapter.
-Not a manual MetaMask extension run.
-Raw evidence retains failed/probe records; final manifest describes reconciliation.
-No historical transaction was rerun for this publication.
-No fresh RPC receipt verification or L1-finality claim is made.
-Older two-party and non-exclusive NFT receipt archives are omitted.
-Existing evidence dates, hashes, host URLs, and local source paths remain immutable.
+Preserve the explicit 31 raw / 30 lifecycle receipt distinction; do not relabel the entire bundle as 30 transactions.
+Recorded provider: controlled Playwright EIP-1193 test-wallet adapter, not manual MetaMask.
+Raw evidence includes failed/probe entries; final manifest describes reconciliation.
+No fresh RPC receipt verification, new deployment, or historical transaction rerun is claimed by this update.
+Superseded two-party/ERC-1155 and non-exclusive NFT receipt archives remain omitted.
+Existing historical evidence, snapshot hashes, and provenance documents are unchanged.
 
-## Provenance and rights
-PROVENANCE.md identifies the original source commit and canonical repository.
-snapshot-manifest.json records copied file sizes and SHA-256 hashes.
-Source README and documents are retained as source-era material, not new hosting instructions.
-No article drafts, PDFs, private operational journals, environment files, or pickle files are published.
-No repository-wide LICENSE existed in the source.
-No new license is introduced.
-Contract SPDX UNLICENSED and site-content CC BY 4.0 attribution are preserved.
-Site notices do not relicense research text, contracts, or dependencies.
-No roadmap or unsupported deployment promises are invented.
+## Roadmap
+Implemented: local drafting/invitations/acceptance; thirteen-field hashing and read-only reports.
+Implemented: exclusive ERC-721 packages, splits, sales, pledges, and test-ETH loans.
+Implemented: reproducible build and full local regression suite.
+This is an implemented-scope checklist, not a release promise.
+Pre-authenticated identification and contract-wallet acceptance are not implemented.
+No production or mainnet rollout is announced.
+
+## Contributing and rights
+With authorized private-repository access: fork, feature/name branch, pull request; or approved in-repository branch.
+Run the local checks before review and preserve exact evidence bytes and rights notices.
+No repository-wide LICENSE file exists; this update introduces no license.
+Contract SPDX UNLICENSED notices remain intact.
+Existing site-content CC BY 4.0 attribution applies only to its stated scope.
+It does not relicense contracts, research text, or third-party dependencies.
+Consult the rights holder before reuse outside applicable grants; this reference is not legal advice.

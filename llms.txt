@@ -1,18 +1,17 @@
 # DPA-SDT
-> Research prototype for self-declarations, partnership acceptance, and participation packages.
+> Document partnership agreements, connect self-declarations, and track ERC-721 participation packages.
 
 ## About
-Fresh independent snapshot; no old Git history, fork relationship, or new blockchain execution. All code remains under test-deployment/. Synthetic inputs only; Base Sepolia evidence is historical.
+Private source repository for a partnership workspace: local agreement drafts, EOA EIP-712 acceptance, thirteen-field SDT commitments, exclusive ERC-721 packages, and read-only historical declaration reports. Creation uses fictional fixtures and test ETH; the separate verifier processes original field strings locally without authenticating identity or banking activity. Public compiled sites are maintained separately; this checkout does not publish them automatically.
 
-- Author: Maxim Osovsky
+- Author: Maxim Osovsky — https://www.linkedin.com/in/osovsky/
 - URL: https://github.com/maximosovsky/DPA-SDT
-- Visibility: private
-- License: no new license; existing source notices retained
-- Checks: hash helper 4 passed; focused contracts 31 passed; build passed; full suite 159 passed / 67 failed
-- Evidence: nine scenarios, 31 distinct receipt hashes; controlled EIP-1193 provider, not manual MetaMask
+- License: no repository-wide grant; contract UNLICENSED and scoped site-content CC BY 4.0 notices retained
+- Checks: npm test 234 passing / 0 failing; npm run test:hash 4 passing / 0 failing; npm run build passed
+- Workflow: in test-deployment/, npm ci; npx playwright install chromium; npm run build; npm run dev -- --port 4173 --strictPort
 
 ## Docs
-- [Full reference](llms-full.txt)
+- [Full reference](https://raw.githubusercontent.com/maximosovsky/DPA-SDT/main/llms-full.txt) — requires repository access
 - [README](README.md)
-- [Provenance](PROVENANCE.md)
-- [Verification](VERIFICATION.md)
+- [Original snapshot provenance](PROVENANCE.md)
+- [Historical verification](VERIFICATION.md)
