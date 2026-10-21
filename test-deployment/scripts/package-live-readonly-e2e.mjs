@@ -1,0 +1,35 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {keccak256,stringToHex} from 'viem';
+const base=process.argv[2]??'http://127.0.0.1:4174';
+const manifest=JSON.parse(await readFile(new URL('../docs/evidence/base-sepolia/exclusive-nft-package/manifest.json',import.meta.url)));
+const browser=await chromium.launch({headless:true});
+try {
+ const page=await browser.newPage({acceptDownloads:true});const errors=[];
+ page.on('pageerror',e=>errors.push(String(e)));
+ await page.goto(`${base}/packages.html`,{waitUntil:'domcontentloaded'});
+ for(const [id,key] of [['formation','formation'],['collection','collection'],['sale','sale'],['loan','loan']])assert.equal((await page.locator(`#${id}`).inputValue()).toLowerCase(),manifest[key].toLowerCase());
+ await page.locator('#inspect').click();
+ await page.locator('#overview').getByText(/Claimed 10000\/10000/).waitFor({timeout:60000}).catch(async e=>{throw Error(`${base}: ${await page.locator('#package-status').innerText()} / errors ${JSON.stringify(errors)} / ${e.message}`)});
+ assert.match(await page.locator('#overview').innerText(),/complete true/);
+ await page.locator('#view').click();await page.locator('#details').getByText(/Burned: no transfer/).waitFor({timeout:60000});
+ assert.match(await page.locator('#details').innerText(),/Burned: no transfer/);
+ await page.locator('#token').fill('3');await page.locator('#view').click();await page.locator('#details').getByText(/40%.*Active/).waitFor({timeout:60000});
+ assert.match(await page.locator('#details').innerText(),/40%.*Active/);
+ const text='SYNTHETIC NFT sale: package 3; 40%; 10000 test wei; no actual rights.';
+ await page.locator('#terms').fill(text);
+ assert.equal(keccak256(stringToHex(text)),manifest.saleState.offer[0].termsHash);
+ await page.locator('#view-offer').click();
+ const link=page.locator('#offer-details a[download]');await link.waitFor({timeout:60000});
+ let packet=JSON.parse((await page.locator('#offer-details').innerText()).split('\nDownload verified offer evidence')[0]);
+ assert.equal(packet.text,text);assert.equal(packet.termsHash,manifest.saleState.offer[0].termsHash);assert.equal(packet.mode,'with SDTs');
+ const downloadPromise=page.waitForEvent('download');await link.click();const download=await downloadPromise;
+ const exported=JSON.parse(await readFile(await download.path(),'utf8'));assert.deepEqual(exported,packet);
+ await page.locator('#terms').fill(text+' edited');assert.equal(await page.locator('#offer-details a').count(),0);assert.equal(await page.locator('#buy').isDisabled(),true);
+ await page.locator('#view-offer').click();await page.locator('#package-status').getByText(/Exact terms hash mismatch/).waitFor({timeout:60000});assert.equal(await page.locator('#offer-details a').count(),0);
+ await page.locator('#terms').fill(text);await page.locator('#without-sdt').check();await page.locator('#view-offer').click();await page.locator('#package-status').getByText(/Sale mode mismatch/).waitFor({timeout:60000});assert.equal(await page.locator('#offer-details a').count(),0);
+ await page.locator('#without-sdt').uncheck();await page.locator('#view-offer').click();await link.waitFor({timeout:60000});await page.locator('#offer-id').fill('2');assert.equal(await page.locator('#offer-details a').count(),0);
+ assert.deepEqual(errors,[]);
+ console.log(JSON.stringify({host:base,formation:manifest.formation,collection:manifest.collection,claimed:manifest.state.totalClaimed,burnedParent:1,activeChild:3,offerEvidenceRoundtrip:true,editedTextRejected:true,modeMismatchRejected:true,staleLinkCleared:true,pageErrors:errors}));
+}finally{await browser.close()}

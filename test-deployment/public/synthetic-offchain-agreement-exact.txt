@@ -1,0 +1,1 @@
+SYNTHETIC DPA v1 (Base Sepolia experiment only). Synthetic Alice 60%; Synthetic Bob 40%. No payment, assignment of legal rights, sale, loan, default or cancellation. Each declares a synthetic identity and accepts this fixed version with a wallet signature.

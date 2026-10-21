@@ -1,0 +1,9 @@
+# SDT + DPA experiment
+> Experimental local and synthetic Base Sepolia NFT package pilot. Synthetic identity data only. No identity/bank verification, L1 finality, or production deployment. Earlier pilot archives are no longer in the current repository tree.
+
+- [Project README](./README.md): reproduction, build, public frontend setup, explicit limitations.
+- [Specification](./docs/specification.md): exact SHA256 identity serialization, SDT and EIP-712 DPA contract semantics.
+- [Threat model](./docs/threat-model.md): attack assumptions and limits.
+- [Test matrix](./docs/test-matrix.md): tested and untested behaviors.
+- [NFT package pilot manifest](./docs/evidence/base-sepolia/nft-package-pilot/manifest.json): current on-chain test evidence.
+- [Full machine-readable overview](./llms-full.txt).

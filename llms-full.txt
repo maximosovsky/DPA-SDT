@@ -1,0 +1,93 @@
+# DPA-SDT full reference
+
+## Overview
+DPA-SDT is a fresh independent publication snapshot of a self-declared token and decentralized partnership research prototype.
+The repository is private and contains one initial commit without old history.
+It is not a GitHub fork and does not replace or alter the old source repository.
+Publishing it makes no hosting or blockchain changes.
+Author: Maxim Osovsky.
+Repository: https://github.com/maximosovsky/DPA-SDT
+
+## Scope
+Use fictional inputs only.
+The SDT v2 commitment binds thirteen exact identity and bank-trace fields.
+Serialization is domain-separated SHA-256 with ordered named UTF-8 fields and uint32 big-endian byte lengths.
+No trimming, case conversion, Unicode normalization, or silent correction is performed.
+The existing cryptopassport domain separator is preserved intentionally.
+Self-declaration does not verify identity, banking activity, or legal rights.
+Partnership formation records EOA EIP-712 acceptance and immutable snapshots.
+Agreement text is maintained off-chain with portable evidence.
+Exclusive package issuance uses ERC-721 rather than legacy ERC-1155 backing.
+Package splitting burns parents without creating additional quantity.
+Sale, pledge, and funded loan flows are synthetic testnet experiments.
+Local tests use isolated simulated contracts and public development accounts.
+Do not use the public Hardhat development mnemonic on any public network.
+Never supply private keys, real identity documents, or real banking data to the interface.
+
+## Architecture
+All project files remain within test-deployment/.
+contracts/: Solidity contract implementations.
+client/: browser application entry points and styles.
+src/: hashing, agreement, evidence, state, and contract-provenance helpers.
+HTML pages: declaration, partnership, shares, packages, sale, verifier, and legal notices.
+test/: inherited node and Hardhat regression tests.
+scripts/: local and historical research runners; not automatically executed.
+canonical-artifacts/: six exact deployed ABI/bytecode JSON artifacts.
+docs/: specifications, threat model, test matrix, and evidence.
+package.json and package-lock.json: preserved dependency declarations.
+
+## Dependencies
+Node.js >=22.13; tested publication environment used Node.js 26.7.0.
+TypeScript 5.9.3.
+Solidity compiler 0.8.28.
+OpenZeppelin contracts 5.4.0.
+Hardhat 3.19.0.
+Vite 7.3.7.
+viem 2.57.6.
+Playwright 1.64.1.
+
+## Local commands
+cd test-deployment
+npm ci --ignore-scripts
+npm run compile
+node --experimental-strip-types --test test/identity-hash-v2.test.ts
+npm run build
+npm run dev -- --port 4173 --strictPort
+Local UI: http://127.0.0.1:4173/
+Compile before building a fresh checkout; six pinned artifacts alone are insufficient.
+No wallet key or RPC credential is needed for the static build.
+The inherited npm test:hash script names a missing old file; use the explicit v2 command.
+
+## Verification
+Hash helper: 4 passed, 0 failed.
+Focused contract/provenance files: 31 passed, 0 failed.
+Full inherited npm test: 159 passed, 67 failed.
+Compilation succeeded for 14 Solidity files.
+Production build succeeded after compilation.
+Full-suite failures remain disclosed; they were not silently removed or called passing.
+Some inherited tests expect removed archives or stale UI/navigation details.
+See VERIFICATION.md for actual commands, failures, and warnings.
+
+## Historical evidence
+Retained: test-deployment/docs/evidence/base-sepolia/published-nine/.
+Retained: test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/.
+Final-nine manifest: nine scenarios and 31 distinct successful receipt hashes.
+Do not restate this bundle as 30 transactions.
+Recorded provider: controlled Playwright EIP-1193 test-wallet adapter.
+Not a manual MetaMask extension run.
+Raw evidence retains failed/probe records; final manifest describes reconciliation.
+No historical transaction was rerun for this publication.
+No fresh RPC receipt verification or L1-finality claim is made.
+Older two-party and non-exclusive NFT receipt archives are omitted.
+Existing evidence dates, hashes, host URLs, and local source paths remain immutable.
+
+## Provenance and rights
+PROVENANCE.md identifies the original source commit and canonical repository.
+snapshot-manifest.json records copied file sizes and SHA-256 hashes.
+Source README and documents are retained as source-era material, not new hosting instructions.
+No article drafts, PDFs, private operational journals, environment files, or pickle files are published.
+No repository-wide LICENSE existed in the source.
+No new license is introduced.
+Contract SPDX UNLICENSED and site-content CC BY 4.0 attribution are preserved.
+Site notices do not relicense research text, contracts, or dependencies.
+No roadmap or unsupported deployment promises are invented.

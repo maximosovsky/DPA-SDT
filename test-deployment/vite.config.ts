@@ -1,0 +1,1 @@
+import {defineConfig} from 'vite';export default defineConfig({base:'./',build:{rollupOptions:{input:{main:'index.html',preview:'index1.html',formation:'dpa.html',shares:'shares.html',packages:'packages.html',sale:'sale.html',privacy:'privacy.html',terms:'terms.html',contact:'contact.html',verify:'verify.html'}}}});

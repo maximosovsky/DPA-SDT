@@ -1,0 +1,136 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import hre from 'hardhat';
+import {keccak256,stringToHex,parseEther} from 'viem';
+import {verifyPackage,verifyPackageOperator} from '../src/package-provenance.ts';
+const {viem}=await hre.network.connect();
+const hash=(s:string)=>keccak256(stringToHex(s));
+async function fixture(){
+ const [alice,bob,buyer,lender]=await viem.getWalletClients(),pub=await viem.getPublicClient();
+ const sdt=await viem.deployContract('SDT');
+ await sdt.write.mint([hash('Synthetic Alice')],{account:alice.account});
+ await sdt.write.mint([hash('Synthetic Bob')],{account:bob.account});
+ await sdt.write.mint([hash('Synthetic Buyer')],{account:buyer.account});
+ const dpa=await viem.deployContract('DPAFormation',[sdt.address,hash('Synthetic agreement'),'v1','',[alice.account.address,bob.account.address],[60,40]]);
+ const types={Accept:[{name:'wallet',type:'address'},{name:'agreementHash',type:'bytes32'},{name:'versionHash',type:'bytes32'},{name:'participantsHash',type:'bytes32'},{name:'sdt',type:'address'},{name:'tokenId',type:'uint256'},{name:'identityHash',type:'bytes32'},{name:'nonce',type:'uint256'}]} as const;
+ async function accept(w:typeof alice,id:bigint,identityHash:`0x${string}`){const nonce=await dpa.read.nonces([w.account.address]);const signature=await w.signTypedData({account:w.account,domain:{name:'Experimental DPA Formation',version:'1',chainId:await pub.getChainId(),verifyingContract:dpa.address},types,primaryType:'Accept',message:{wallet:w.account.address,agreementHash:await dpa.read.agreementHash(),versionHash:await dpa.read.versionHash(),participantsHash:await dpa.read.participantsHash(),sdt:sdt.address,tokenId:id,identityHash,nonce}});await dpa.write.accept([w.account.address,id,nonce,signature],{account:w.account});}
+ const nft=await viem.deployContract('DPAPackageNFT',[dpa.address]);
+ await assert.rejects(nft.write.claim({account:alice.account}));
+ await accept(alice,1n,hash('Synthetic Alice'));await accept(bob,2n,hash('Synthetic Bob'));
+ await nft.write.claim({account:alice.account});await nft.write.claim({account:bob.account});
+ return {alice,bob,buyer,lender,pub,sdt,dpa,nft};
+}
+test('canonical package and operator runtimes bind formation and SDT before wallet action',async()=>{
+ const f=await fixture(),chain=await f.pub.getChainId();
+ const sale=await viem.deployContract('DPAPackageSale',[f.nft.address,f.sdt.address]);
+ const loan=await viem.deployContract('DPAPackageLoan',[f.nft.address]);
+ await verifyPackage(f.pub,f.nft.address,f.dpa.address,chain);
+ await verifyPackageOperator(f.pub,'sale',sale.address,f.nft.address,f.sdt.address);
+ await verifyPackageOperator(f.pub,'loan',loan.address,f.nft.address);
+ await assert.rejects(verifyPackage(f.pub,f.nft.address,f.sdt.address,chain));
+ await assert.rejects(verifyPackageOperator(f.pub,'sale',sale.address,f.nft.address,f.dpa.address));
+});
+test('claim requires completed formation, mints ERC721 only once, records full supply without ERC1155 backing',async()=>{
+ const f=await fixture();assert.equal(await f.nft.read.supportsInterface(['0x80ac58cd']),true);
+ assert.equal(await f.nft.read.totalClaimed(),10000n);
+ assert.equal((await f.nft.read.packages([1n]))[0],6000n);
+ await assert.rejects(f.nft.write.claim({account:f.alice.account}));
+ const uri=await f.nft.read.tokenURI([1n]);assert.match(uri,/data:application\/json;base64,/);
+});
+test('atomic split burns parent, survives as history and children can split again without inflation',async()=>{
+ const f=await fixture();await assert.rejects(f.nft.write.split([2n,[3000n,999n]],{account:f.bob.account}));
+ await assert.rejects(f.nft.write.split([2n,[4000n,0n]],{account:f.bob.account}));
+ await f.nft.write.split([2n,[3000n,1000n]],{account:f.bob.account});
+ await assert.rejects(f.nft.read.ownerOf([2n]));await assert.rejects(f.nft.write.split([2n,[1000n,3000n]],{account:f.bob.account}));
+ assert.deepEqual(await f.nft.read.childrenOf([2n]),[3n,4n]);assert.equal((await f.nft.read.packages([2n]))[3],2);
+ await f.nft.write.split([3n,[2000n,1000n]],{account:f.bob.account});
+ assert.deepEqual(await f.nft.read.childrenOf([3n]),[5n,6n]);assert.equal((await f.nft.read.packages([5n]))[1],3n);
+ assert.equal(await f.nft.read.activeQuantity(),10000n);
+ await f.nft.write.safeTransferFrom([f.bob.account.address,f.buyer.account.address,4n],{account:f.bob.account});
+ assert.equal((await f.nft.read.ownerOf([4n])).toLowerCase(),f.buyer.account.address.toLowerCase());
+ assert.equal((await f.nft.read.packages([4n]))[0],1000n);
+});
+test('explicit no-SDT sale preserves package ID and rejects nonempty SDT snapshots',async()=>{
+ const f=await fixture();const sale=await viem.deployContract('DPAPackageSale',[f.nft.address,f.sdt.address]);
+ const deadline=(await f.pub.getBlock()).timestamp+3600n;
+ const t={seller:f.alice.account.address,buyer:f.lender.account.address,formation:f.dpa.address,collection:f.nft.address,tokenId:1n,quantity:6000n,price:123n,termsHash:hash('exact synthetic no-SDT terms'),withSDT:false,sellerSdtId:0n,sellerIdentityHash:`0x${'0'.repeat(64)}` as `0x${string}`,buyerSdtId:0n,buyerIdentityHash:`0x${'0'.repeat(64)}` as `0x${string}`,sellerNonce:0n,buyerNonce:0n,deadline};
+ const types={Sale:[{name:'seller',type:'address'},{name:'buyer',type:'address'},{name:'formation',type:'address'},{name:'collection',type:'address'},{name:'tokenId',type:'uint256'},{name:'quantity',type:'uint256'},{name:'price',type:'uint256'},{name:'termsHash',type:'bytes32'},{name:'withSDT',type:'bool'},{name:'sellerSdtId',type:'uint256'},{name:'sellerIdentityHash',type:'bytes32'},{name:'buyerSdtId',type:'uint256'},{name:'buyerIdentityHash',type:'bytes32'},{name:'sellerNonce',type:'uint256'},{name:'buyerNonce',type:'uint256'},{name:'deadline',type:'uint256'}]} as const;
+ const domain={name:'DPA Package Sale',version:'1',chainId:await f.pub.getChainId(),verifyingContract:sale.address};
+ const sellerSig=await f.alice.signTypedData({account:f.alice.account,domain,types,primaryType:'Sale',message:t});
+ const buyerSig=await f.lender.signTypedData({account:f.lender.account,domain,types,primaryType:'Sale',message:t});
+ await f.nft.write.approve([sale.address,1n],{account:f.alice.account});
+ await assert.rejects(sale.write.createOffer([{...t,buyerSdtId:3n},sellerSig],{account:f.alice.account}));
+ await sale.write.createOffer([t,sellerSig],{account:f.alice.account});
+ await sale.write.buy([1n,t,buyerSig],{account:f.lender.account,value:123n});
+ assert.equal((await f.nft.read.ownerOf([1n])).toLowerCase(),f.lender.account.address.toLowerCase());
+ assert.equal((await sale.read.offer([1n]))[1],2);
+});
+test('specific NFT pledge locks against split and releases same ID; funded loan repays and default transfers same ID',async()=>{
+ const f=await fixture();const loan=await viem.deployContract('DPAPackageLoan',[f.nft.address]);
+ await f.nft.write.approve([loan.address,2n],{account:f.bob.account});
+ await loan.write.createPledge([2n,f.lender.account.address,100n,hash('pledge terms')],{account:f.bob.account});
+ await assert.rejects(f.nft.write.split([2n,[2000n,2000n]],{account:f.bob.account}));
+ assert.equal((await f.nft.read.packages([2n]))[3],3);
+ await loan.write.releasePledge([1n],{account:f.lender.account});
+ assert.equal((await f.nft.read.ownerOf([2n])).toLowerCase(),f.bob.account.address.toLowerCase());
+ await f.nft.write.approve([loan.address,2n],{account:f.bob.account});
+ await loan.write.createLoan([2n,f.lender.account.address,100n,1000n,200n,hash('loan terms')],{account:f.bob.account});
+ await loan.write.fund([2n],{account:f.lender.account,value:100n});
+ assert.equal(await loan.read.credits([f.bob.account.address]),100n);
+ await assert.rejects(loan.write.repay([2n],{account:f.bob.account,value:109n}));
+ await loan.write.repay([2n],{account:f.bob.account,value:110n});
+ await loan.write.claimRepaidCollateral([2n],{account:f.bob.account});
+ assert.equal((await f.nft.read.ownerOf([2n])).toLowerCase(),f.bob.account.address.toLowerCase());
+ await loan.write.withdraw({account:f.bob.account});await loan.write.withdraw({account:f.lender.account});
+ await f.nft.write.approve([loan.address,2n],{account:f.bob.account});
+ await loan.write.createLoan([2n,f.lender.account.address,100n,0n,1n,hash('second loan')],{account:f.bob.account});
+ await loan.write.fund([3n],{account:f.lender.account,value:100n});
+ await f.pub.request({method:'evm_increaseTime',params:[2]});await f.pub.request({method:'evm_mine'});
+ await loan.write.claimDefault([3n],{account:f.lender.account});
+ assert.equal((await f.nft.read.ownerOf([2n])).toLowerCase(),f.lender.account.address.toLowerCase());
+});
+
+test('escrow locks exact NFT, sale signs both parties against terms, fixed price and identity snapshots',async()=>{
+ const f=await fixture();const sale=await viem.deployContract('DPAPackageSale',[f.nft.address,f.sdt.address]);
+ const now=(await f.pub.getBlock()).timestamp,price=parseEther('0.01'),termsHash=hash('Synthetic exact sale terms');
+ const message={seller:f.bob.account.address,buyer:f.buyer.account.address,formation:f.dpa.address,collection:f.nft.address,tokenId:2n,quantity:4000n,price,termsHash,withSDT:true,sellerSdtId:2n,sellerIdentityHash:hash('Synthetic Bob'),buyerSdtId:3n,buyerIdentityHash:hash('Synthetic Buyer'),sellerNonce:0n,buyerNonce:0n,deadline:now+3600n};
+ const types={Sale:[{name:'seller',type:'address'},{name:'buyer',type:'address'},{name:'formation',type:'address'},{name:'collection',type:'address'},{name:'tokenId',type:'uint256'},{name:'quantity',type:'uint256'},{name:'price',type:'uint256'},{name:'termsHash',type:'bytes32'},{name:'withSDT',type:'bool'},{name:'sellerSdtId',type:'uint256'},{name:'sellerIdentityHash',type:'bytes32'},{name:'buyerSdtId',type:'uint256'},{name:'buyerIdentityHash',type:'bytes32'},{name:'sellerNonce',type:'uint256'},{name:'buyerNonce',type:'uint256'},{name:'deadline',type:'uint256'}]} as const;
+ const domain={name:'DPA Package Sale',version:'1',chainId:await f.pub.getChainId(),verifyingContract:sale.address};
+ const sigA=await f.bob.signTypedData({account:f.bob.account,domain,types,primaryType:'Sale',message});
+ const sigB=await f.buyer.signTypedData({account:f.buyer.account,domain,types,primaryType:'Sale',message});
+ await f.nft.write.approve([sale.address,2n],{account:f.bob.account});
+ await assert.rejects(sale.write.createOffer([{...message,price:price+1n},sigA],{account:f.bob.account}));
+ await sale.write.createOffer([message,sigA],{account:f.bob.account});
+ assert.equal((await f.nft.read.ownerOf([2n])).toLowerCase(),sale.address.toLowerCase());
+ await assert.rejects(f.nft.write.split([2n,[2000n,2000n]],{account:f.bob.account}));
+ await assert.rejects(f.nft.write.safeTransferFrom([f.bob.account.address,f.alice.account.address,2n],{account:f.bob.account}));
+ await assert.rejects(sale.write.buy([1n,{...message,buyer:f.alice.account.address},sigB],{account:f.buyer.account,value:price}));
+ await assert.rejects(sale.write.buy([1n,message,sigB],{account:f.buyer.account,value:price-1n}));
+ await sale.write.buy([1n,message,sigB],{account:f.buyer.account,value:price});
+ assert.equal((await f.nft.read.ownerOf([2n])).toLowerCase(),f.buyer.account.address.toLowerCase());
+ assert.equal(await sale.read.credits([f.bob.account.address]),price);
+ await assert.rejects(sale.write.buy([1n,message,sigB],{account:f.buyer.account,value:price}));
+ await sale.write.withdraw({account:f.bob.account});assert.equal(await sale.read.credits([f.bob.account.address]),0n);
+});
+
+test('sale signatures reject replay, altered terms, SDT, chain, verifying contract and expired deadline',async()=>{
+ const f=await fixture(),sale=await viem.deployContract('DPAPackageSale',[f.nft.address,f.sdt.address]);
+ const types={Sale:[{name:'seller',type:'address'},{name:'buyer',type:'address'},{name:'formation',type:'address'},{name:'collection',type:'address'},{name:'tokenId',type:'uint256'},{name:'quantity',type:'uint256'},{name:'price',type:'uint256'},{name:'termsHash',type:'bytes32'},{name:'withSDT',type:'bool'},{name:'sellerSdtId',type:'uint256'},{name:'sellerIdentityHash',type:'bytes32'},{name:'buyerSdtId',type:'uint256'},{name:'buyerIdentityHash',type:'bytes32'},{name:'sellerNonce',type:'uint256'},{name:'buyerNonce',type:'uint256'},{name:'deadline',type:'uint256'}]} as const;
+ const domain={name:'DPA Package Sale',version:'1',chainId:await f.pub.getChainId(),verifyingContract:sale.address};
+ const t={seller:f.bob.account.address,buyer:f.buyer.account.address,formation:f.dpa.address,collection:f.nft.address,tokenId:2n,quantity:4000n,price:101n,termsHash:hash('exact synthetic terms'),withSDT:true,sellerSdtId:2n,sellerIdentityHash:hash('Synthetic Bob'),buyerSdtId:3n,buyerIdentityHash:hash('Synthetic Buyer'),sellerNonce:0n,buyerNonce:0n,deadline:(await f.pub.getBlock()).timestamp+3600n};
+ const sign=(wallet:typeof f.bob,message:typeof t,ctx=domain)=>wallet.signTypedData({account:wallet.account,domain:ctx,types,primaryType:'Sale',message});
+ await f.nft.write.approve([sale.address,2n],{account:f.bob.account});const sellerSig=await sign(f.bob,t);
+ for(const bad of [{...t,termsHash:hash('different terms')},{...t,tokenId:1n},{...t,price:102n},{...t,buyer:f.alice.account.address},{...t,buyerSdtId:2n},{...t,sellerIdentityHash:hash('altered declaration')},{...t,formation:f.alice.account.address}])await assert.rejects(sale.write.createOffer([bad,sellerSig],{account:f.bob.account}));
+ await assert.rejects(sale.write.createOffer([t,await sign(f.bob,t,{...domain,chainId:domain.chainId+1})],{account:f.bob.account}));
+ await assert.rejects(sale.write.createOffer([t,await sign(f.bob,t,{...domain,verifyingContract:f.nft.address})],{account:f.bob.account}));
+ await sale.write.createOffer([t,sellerSig],{account:f.bob.account});
+ await assert.rejects(sale.write.createOffer([t,sellerSig],{account:f.bob.account}));
+ await assert.rejects(sale.write.buy([1n,t,await sign(f.bob,t)],{account:f.buyer.account,value:101n}));
+ const buyerSig=await sign(f.buyer,t);
+ await assert.rejects(sale.write.buy([1n,{...t,termsHash:hash('different terms')},buyerSig],{account:f.buyer.account,value:101n}));
+ await assert.rejects(sale.write.buy([1n,t,buyerSig],{account:f.buyer.account,value:100n}));
+ await sale.write.buy([1n,t,buyerSig],{account:f.buyer.account,value:101n});
+ await assert.rejects(sale.write.buy([1n,t,buyerSig],{account:f.buyer.account,value:101n}));
+ const expired={...t,tokenId:1n,quantity:6000n,seller:f.alice.account.address,sellerSdtId:1n,sellerIdentityHash:hash('Synthetic Alice'),sellerNonce:0n,buyerNonce:1n,deadline:1n};
+ await assert.rejects(sale.write.createOffer([expired,await sign(f.alice,expired)],{account:f.alice.account}));
+});

@@ -1,0 +1,1057 @@
+{
+  "schema": "fresh-publication-snapshot-v1",
+  "createdAt": "2026-10-21T07:08:15.584756+00:00",
+  "sourceRepository": "https://github.com/maximosovsky/cryptopassport-testnet",
+  "sourceCommit": "b753174d8af330ee32e57fbca404179bed599c94",
+  "sourceWorkingTreeClean": true,
+  "files": [
+    {
+      "path": "test-deployment/.gitignore",
+      "bytes": 289,
+      "sha256": "736ae8da2da89e8a35883a8c29b9242165332a2ee3572c77be92f5da0b2edd47"
+    },
+    {
+      "path": "test-deployment/README.md",
+      "bytes": 4629,
+      "sha256": "c4057916bdf8e769116017ac60870475ea2f1b98321895951008827d697060a3"
+    },
+    {
+      "path": "test-deployment/canonical-artifacts/artifacts/contracts/DPAPackageLoan.sol/DPAPackageLoan.json",
+      "bytes": 35492,
+      "sha256": "45cae44fb5b8a26866ef006a7fb625d5954ed099df5927cc67da8b6ade0b1394"
+    },
+    {
+      "path": "test-deployment/canonical-artifacts/artifacts/contracts/DPAPackageNFTV2.sol/DPAPackageNFTV2.json",
+      "bytes": 61509,
+      "sha256": "7d00ebc5a64c672938b3cc9a7b11937f40bfe34e94976b7add8234e270d2c4bc"
+    },
+    {
+      "path": "test-deployment/canonical-artifacts/artifacts/contracts/DPAPackageSale.sol/DPAPackageSale.json",
+      "bytes": 56334,
+      "sha256": "04eb4a4bea4fe11be0955ac846dab1dacc98f5680581e1a730b6faf1d82c9c7d"
+    },
+    {
+      "path": "test-deployment/canonical-artifacts/artifacts/contracts/ExclusiveDPAFormation.sol/ExclusiveDPAFormation.json",
+      "bytes": 36646,
+      "sha256": "b336c11bcf35dfa5f86d7a5fabc2cc5a30cbad526fc3215b3c1235ac34d79b53"
+    },
+    {
+      "path": "test-deployment/canonical-artifacts/artifacts/contracts/ExclusivePackageFactory.sol/ExclusivePackageFactory.json",
+      "bytes": 89253,
+      "sha256": "61481610ad2d43bd545c8b6dd7bbb8d483c9e34b842152acc5af777f680e2308"
+    },
+    {
+      "path": "test-deployment/canonical-artifacts/artifacts/contracts/SDT.sol/SDT.json",
+      "bytes": 31258,
+      "sha256": "4f682bc0fa9efa5d82b3d25806066536b47134cd456da358688fd44da83fbc44"
+    },
+    {
+      "path": "test-deployment/client/bank-trace.ts",
+      "bytes": 755,
+      "sha256": "f8b20ca82f9676ec9ee1a4895751a0128b17c0b6f3e45922c1e2be07259a379d"
+    },
+    {
+      "path": "test-deployment/client/field-feedback.ts",
+      "bytes": 1990,
+      "sha256": "fdb0a874f81de535590b4ce597b9febaa69f0513da094df32bc7914d8afb95dd"
+    },
+    {
+      "path": "test-deployment/client/formation-style.ts",
+      "bytes": 46,
+      "sha256": "4176740efe30327f94576e17955289fa47737014c789c58fc1245d3506617df3"
+    },
+    {
+      "path": "test-deployment/client/formation.css",
+      "bytes": 859,
+      "sha256": "aeffd33ffc3fbc70a1b66b435ac0bce7758a3bbcd8e146fbcfe0e6a25b39dbe4"
+    },
+    {
+      "path": "test-deployment/client/formation.ts",
+      "bytes": 18737,
+      "sha256": "186b2dafc83373f8e30218af752aa7d7d3c59470b8c6a69f3a69ae8b14bb4bf8"
+    },
+    {
+      "path": "test-deployment/client/index1-preview.css",
+      "bytes": 4713,
+      "sha256": "62fbac23b3c84d51f86a5ec036f58a41fb04fe2d3cf61a31aede52f34ecc7fc2"
+    },
+    {
+      "path": "test-deployment/client/main.ts",
+      "bytes": 13152,
+      "sha256": "6ab154a8b7b749a34281e60190f38135148e6e856d4ed4d2e9907ffce6ea754a"
+    },
+    {
+      "path": "test-deployment/client/packages.ts",
+      "bytes": 20682,
+      "sha256": "cccbdc853f612649bf44819472425b755ce135873316611183bed5d1c524966f"
+    },
+    {
+      "path": "test-deployment/client/sale.ts",
+      "bytes": 13113,
+      "sha256": "cd6c8ca458e6ed131075a7eada16a25d2a0c8a006855c63630cbdae97ea7c9db"
+    },
+    {
+      "path": "test-deployment/client/shares.ts",
+      "bytes": 15383,
+      "sha256": "d71767fbc53084f78dddbf53d759715f5d46650c26d6b69bb0c160495c2c5f27"
+    },
+    {
+      "path": "test-deployment/client/site.css",
+      "bytes": 16603,
+      "sha256": "f39d45f3d8ffecac45ba536b9e6628959c1cbb7fb0dce6d2bea04c414a79c215"
+    },
+    {
+      "path": "test-deployment/client/style.css",
+      "bytes": 872,
+      "sha256": "14250024b37811cb22788ec275c23b416067bdf000afe272753957a9f3e6bc44"
+    },
+    {
+      "path": "test-deployment/client/verify.css",
+      "bytes": 675,
+      "sha256": "f787f7475715380c4c2b80968464d52ecfdc2ef0df9356ccec2da0482df7f506"
+    },
+    {
+      "path": "test-deployment/client/verify.ts",
+      "bytes": 3137,
+      "sha256": "bf815664a8be3d8e73c07c4fb9894b6c41dd0eaa60576b762138557eb715a4aa"
+    },
+    {
+      "path": "test-deployment/contact.html",
+      "bytes": 2942,
+      "sha256": "37201be585e62b999797d4eb5ed982a624005fecffcaa41eb6ad838093888abd"
+    },
+    {
+      "path": "test-deployment/contracts/DPA.sol",
+      "bytes": 1961,
+      "sha256": "38cc623c85f5e365c3644420551495551a0bcdb9b21b22de9a46032b87fb137a"
+    },
+    {
+      "path": "test-deployment/contracts/DPAFormation.sol",
+      "bytes": 3405,
+      "sha256": "0d0a4240e8cd3b324bd56cb8b09e65c8f4e76875a508d7c1ece999c525d16714"
+    },
+    {
+      "path": "test-deployment/contracts/DPAPackageLoan.sol",
+      "bytes": 5656,
+      "sha256": "6cefbccf974f98c30be55ad13f7c3c577d2a2bc511e6d425b27dd5854620be88"
+    },
+    {
+      "path": "test-deployment/contracts/DPAPackageNFT.sol",
+      "bytes": 5342,
+      "sha256": "08db0deff80b50b8ee76aa46f7d29434f85ea7af65869f7c894455b6c5879627"
+    },
+    {
+      "path": "test-deployment/contracts/DPAPackageNFTV2.sol",
+      "bytes": 5730,
+      "sha256": "babd10763aa963970fd3b96686a0fb5dc98ce06db8ab70adde93bad3dc21c9fd"
+    },
+    {
+      "path": "test-deployment/contracts/DPAPackageSale.sol",
+      "bytes": 6544,
+      "sha256": "709d604a215880c355d1fe0cfcc214b69e625b8b859e7d10f3732ceecf1a6cf7"
+    },
+    {
+      "path": "test-deployment/contracts/DPAShareLoan.sol",
+      "bytes": 7563,
+      "sha256": "f6b599b3fb00efa0327f3d1ff874e316ec23131c762fb7853ea155bac0941fc3"
+    },
+    {
+      "path": "test-deployment/contracts/DPAShareNFT.sol",
+      "bytes": 6634,
+      "sha256": "cc04febfc7a8244f122a0eb6f0d736d675763e1d64440dfd2b7c4a1b2c358daa"
+    },
+    {
+      "path": "test-deployment/contracts/DPAShareSale.sol",
+      "bytes": 4205,
+      "sha256": "d3b038276801b98e754424f0b84430fc18d3c4bf9f2e8b3b342eb698e163d859"
+    },
+    {
+      "path": "test-deployment/contracts/DPAShareUnits.sol",
+      "bytes": 4303,
+      "sha256": "d0fb7fa9cbeaa4ab3d7f15a3e960c595fda9a2b97ebfd70e0024803e815bc63a"
+    },
+    {
+      "path": "test-deployment/contracts/ExclusiveDPAFormation.sol",
+      "bytes": 3775,
+      "sha256": "90b34624a5869659457f307f8c269acbc20bd5a354b2d5999110639eff64e700"
+    },
+    {
+      "path": "test-deployment/contracts/ExclusivePackageFactory.sol",
+      "bytes": 827,
+      "sha256": "f46cca042866d2ca8c7a9058481978ba14d42d3b68e891e627cde2dacf37c7b9"
+    },
+    {
+      "path": "test-deployment/contracts/SDT.sol",
+      "bytes": 1171,
+      "sha256": "5d171338f439b1cea5892e2ab2ce6c6d7b3a741322e207ce5f663294247e54f9"
+    },
+    {
+      "path": "test-deployment/contracts/SaleReentryProbe.sol",
+      "bytes": 1350,
+      "sha256": "4d3628c3c0dc958e3104ea98fc30a866976951732ec6c8d4349b94ef198b3d1c"
+    },
+    {
+      "path": "test-deployment/docs/2026-10-14-offchain-formation.md",
+      "bytes": 2617,
+      "sha256": "324c77588787da3a627fd7eb00449460c08dd9d3174f84dc9568b6c788dd2656"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/accept-alice-receipt.json",
+      "bytes": 2109,
+      "sha256": "46abeb76a483fbe4ab7cc2794ecf1548bba6463adab9cb15f54287c833eeb7a8"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/accept-bob-receipt.json",
+      "bytes": 2108,
+      "sha256": "01b6a0e982e6c1e26228da42695a650a3ce4411d8ca1f181fa22a5e4c65e9ce2"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/approve-loan-alice-receipt.json",
+      "bytes": 2057,
+      "sha256": "5315e40957eb83ddd06158e4be53c16db8dac53fba5b304bae91f6da51f389cc"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/approve-loan-receipt.json",
+      "bytes": 2057,
+      "sha256": "3ceee1757ff419f3805325a6c596a40f45697d83d0489f50bd5b06e18a40ccd4"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/approve-sale-receipt.json",
+      "bytes": 2057,
+      "sha256": "3af2df971ca0534d76ce4caecf89dc24c180363b1767f4914c063f68aaa2e618"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/buy-sdt-receipt.json",
+      "bytes": 3630,
+      "sha256": "8d39773795027c21fb856487860f508b80cbdd0717b49aab2073661ec9633406"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/claim-alice-receipt.json",
+      "bytes": 2809,
+      "sha256": "37cf693e6d7cb304315acc90d4b0df553ad752b48c7fc2a014b57223c9967dda"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/claim-bob-receipt.json",
+      "bytes": 2810,
+      "sha256": "02086b7c66d4b8efd4c8c036c94c993129eaf6e9616683ed7bb8aa45bf278b97"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/create-formation-package-receipt.json",
+      "bytes": 2592,
+      "sha256": "f46f9a4a0973f84c101b5e8dc65a5f71e2469fa38dd25d2cc2bd01c1c96c92fe"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/deploy-factory-receipt.json",
+      "bytes": 1300,
+      "sha256": "e9dc34dd7e61f887ec165bb344d80e1a9e632eb40a0e3efd4e497be4b5216e0d"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/deploy-loan-receipt.json",
+      "bytes": 1298,
+      "sha256": "b096c93dce1336c2305a3b03ef5a3e77dcafa5c3b413e3de873a86aeb4fca1e6"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/deploy-sale-receipt.json",
+      "bytes": 1296,
+      "sha256": "2706d3259d4c04ad3a7d35038082611702f4ee69744e5fe4de7d647e9e74086e"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/fund-loan-receipt.json",
+      "bytes": 1965,
+      "sha256": "ae266051f117837f3f88c57661720cbcadaf600069f97ab6afe0fe08c98a402d"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/loan-alice-receipt.json",
+      "bytes": 3708,
+      "sha256": "6e98034669d89dad15beea99f114437290de17f3b7536353253f8ca81d6bbcb1"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/manifest.json",
+      "bytes": 19528,
+      "sha256": "12b6d260ea4830e4c05a20c91e39836241994bdded545c94c00616f1caf7e71e"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/offer-sdt-receipt.json",
+      "bytes": 3897,
+      "sha256": "834fda10e522c8e44da24ef8c59c60f673ef87f9547624a3eb4dd2d880fc2ecd"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/pledge-bob-receipt.json",
+      "bytes": 3700,
+      "sha256": "fb02ee7e132cfb9e83485c15a4636ec25e9e4e25021ce1dd940ad5116802a335"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/recover-collateral-receipt.json",
+      "bytes": 3481,
+      "sha256": "f0cc27e94dde5aeb343714f427fd13993392cd1556e5ee7be635c20338e339b8"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/release-pledge-receipt.json",
+      "bytes": 3486,
+      "sha256": "6dcf2ab2258df1d2e5480abb22852bbdc055c1605b24cdbcde389d2f72dda838"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/repay-loan-receipt.json",
+      "bytes": 1961,
+      "sha256": "27c2123158ce07387108efa9e15aa892a1fa2bb0c109cc368f64338b42752027"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/split-alice-receipt.json",
+      "bytes": 4527,
+      "sha256": "d73672ab0dd14a74b80af2a66b3a4507d870cdb0751126e104ca258b2cd40535"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/withdraw-principal-receipt.json",
+      "bytes": 1962,
+      "sha256": "fd7ab0ed9e5e7cac41e2cc0847467253c7ff8aae480cb386eef041265f8fa13c"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/withdraw-repayment-receipt.json",
+      "bytes": 1964,
+      "sha256": "f7ab30c0fb9847bb555bc6545b8cbfb3515135fa61a612c3d5454c381886ad1a"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/exclusive-nft-package/withdraw-sale-receipt.json",
+      "bytes": 1964,
+      "sha256": "75308462a9820c493364bf417f32c0f22fc92c55c9b5395e6cc2e2f0425773ff"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/published-nine/evidence.json",
+      "bytes": 31347,
+      "sha256": "a67dd674b9acb1ce793e7a1201cb26fbff470b308dafc256889928755784442a"
+    },
+    {
+      "path": "test-deployment/docs/evidence/base-sepolia/published-nine/final-nine-manifest.json",
+      "bytes": 10912,
+      "sha256": "3b8a859cb6b88a9427245952304acbf7194e7beb6f4f9d65f380f8d82a2034fb"
+    },
+    {
+      "path": "test-deployment/docs/fractional-share-loans.md",
+      "bytes": 6164,
+      "sha256": "ab28b7a753a3d26dc79b4c328f5f00ea822b78543082773a3ae7a1df64e02960"
+    },
+    {
+      "path": "test-deployment/docs/sales.md",
+      "bytes": 2844,
+      "sha256": "ffc0571595331984117a861024728d7f1418fe28f16d283ec89f46d472c51be6"
+    },
+    {
+      "path": "test-deployment/docs/share-nft.md",
+      "bytes": 3336,
+      "sha256": "1bfbc580ef546814257f1b69336eece8cb3d34b88f8e3fd7d8423ca8cb6394eb"
+    },
+    {
+      "path": "test-deployment/docs/specification.md",
+      "bytes": 2562,
+      "sha256": "f738e1cc5636f3ed458445472b45db20350017c657181203cfe0c7dc8d631ee2"
+    },
+    {
+      "path": "test-deployment/docs/test-matrix.md",
+      "bytes": 1532,
+      "sha256": "58191b96a57737a15145f213ffd3787b710641fe8ee04cedddae1c22f17fe49b"
+    },
+    {
+      "path": "test-deployment/docs/threat-model.md",
+      "bytes": 2072,
+      "sha256": "d3b34f91c8378e689ea295396579f8c8ec6f9835f57bbd27ac9e523ab067a371"
+    },
+    {
+      "path": "test-deployment/dpa.html",
+      "bytes": 6850,
+      "sha256": "51d299752d57ba2a0ee491a0f1b9d28daf66357febe21135e4793815084744a4"
+    },
+    {
+      "path": "test-deployment/hardhat.config.ts",
+      "bytes": 369,
+      "sha256": "a530c011e371d9b7239f5e42dc425ebaae3eefd10f303e05672ff74b1ba12dac"
+    },
+    {
+      "path": "test-deployment/index.html",
+      "bytes": 9658,
+      "sha256": "c9ba77e3f7d5b17b94c90b01dbb182768522347e2c43c5a60ce39d020a68f858"
+    },
+    {
+      "path": "test-deployment/index1.html",
+      "bytes": 9641,
+      "sha256": "12a7d179648a28308e9c1f8fa287536d7088629fd8f49daa9985388972324a3a"
+    },
+    {
+      "path": "test-deployment/llms-full.txt",
+      "bytes": 2321,
+      "sha256": "2a8d5e8a771368fb17109f98628205d26977d6438d0e62833a30444fab10daec"
+    },
+    {
+      "path": "test-deployment/llms.txt",
+      "bytes": 803,
+      "sha256": "b082cffd6863acfa28c13b9982f789290efd2bcc5d1e1e660995bec1f62de111"
+    },
+    {
+      "path": "test-deployment/package-lock.json",
+      "bytes": 107209,
+      "sha256": "3c7b21acdc228b83e797165716c5991a0175febe905e297dce428e0043f5f5b4"
+    },
+    {
+      "path": "test-deployment/package.json",
+      "bytes": 510,
+      "sha256": "d5990f56212b64211bc47649693de5b06506d9e6da10ed9a71dfe337ccfece93"
+    },
+    {
+      "path": "test-deployment/packages.html",
+      "bytes": 6843,
+      "sha256": "a5335ca9b5e218371b832d401eb96ceedddbfbb0206ed1aeec227cf62d89ef46"
+    },
+    {
+      "path": "test-deployment/privacy.html",
+      "bytes": 5159,
+      "sha256": "49f01f94c79cc46376c51adff9478e9c9cf7eeb45f527b53e109fc66b3c109de"
+    },
+    {
+      "path": "test-deployment/public/synthetic-offchain-agreement-exact.txt",
+      "bytes": 256,
+      "sha256": "5f0315e2e7d6bd863c3395b2f9ccc80c92252e6fb8b994358605038ccf81755e"
+    },
+    {
+      "path": "test-deployment/sale.html",
+      "bytes": 4793,
+      "sha256": "56c6a146bd18808a530952be1037bfd0d09d3feb48d9055bd91f373afa57a8b6"
+    },
+    {
+      "path": "test-deployment/scripts/base-sepolia-exclusive-package.mjs",
+      "bytes": 18779,
+      "sha256": "97c395b58d64ea57e9891e79f7079bef08ff7d6d365e0841f0dd64352b54a87b"
+    },
+    {
+      "path": "test-deployment/scripts/base-sepolia-journal.ts",
+      "bytes": 2856,
+      "sha256": "80c6b07d71b1bca49d68a694bd4eabef70cb7edd30308934641d1fd187c11b6d"
+    },
+    {
+      "path": "test-deployment/scripts/base-sepolia-nft-package.mjs",
+      "bytes": 16583,
+      "sha256": "89af5cba259d68c6cdacaa629be3d79badc3a83cc27c4941ccdd412fc3e03db9"
+    },
+    {
+      "path": "test-deployment/scripts/base-sepolia-run-state.ts",
+      "bytes": 2014,
+      "sha256": "b0eb0255fc5cedffae6e6f42c72b471793ee62c52dc39bee027afea275ad1d46"
+    },
+    {
+      "path": "test-deployment/scripts/base-sepolia-safety.ts",
+      "bytes": 741,
+      "sha256": "45fb39a1c0f7922f87adb7d8654c155695c3080b30c9528a316a2c825279be31"
+    },
+    {
+      "path": "test-deployment/scripts/browser-regression.mjs",
+      "bytes": 6127,
+      "sha256": "cc2b0f3c7520f12fda8ababf8bdd3cc08b47cd20fee2bd5f63d1e5456417b038"
+    },
+    {
+      "path": "test-deployment/scripts/browser-smoke.mjs",
+      "bytes": 1222,
+      "sha256": "1619fd1ce9539a2a17cdd4e27abe374121af6e13b8eb34d725d7f0b2f47c3bf5"
+    },
+    {
+      "path": "test-deployment/scripts/formation-browser-e2e.mjs",
+      "bytes": 10372,
+      "sha256": "ee83f24b11e1ab78dc5bdb460031e862cf678314a6d6b255945fd01582199225"
+    },
+    {
+      "path": "test-deployment/scripts/formation-feedback-regression.mjs",
+      "bytes": 1691,
+      "sha256": "8e407ff0848fbfdc0d11bd8ab9ce6684fb056c63b1bcbc522e7d23740b2af623"
+    },
+    {
+      "path": "test-deployment/scripts/formation-local-runner.mjs",
+      "bytes": 999,
+      "sha256": "9c1f98fc47d743dd545b3d32459f84210293de979fbe8fa8ba1cbd7cac5064d2"
+    },
+    {
+      "path": "test-deployment/scripts/install-pilot-artifacts.mjs",
+      "bytes": 1070,
+      "sha256": "d45670e43b2fae030c1d668f93a396442d2edae0f78a648263ea3100d07d6221"
+    },
+    {
+      "path": "test-deployment/scripts/package-live-readonly-e2e.mjs",
+      "bytes": 3692,
+      "sha256": "f71c864fbcdfec24dc6f40091cc226ad9558c094106ceb3d2bdcb42d545ef7bd"
+    },
+    {
+      "path": "test-deployment/scripts/partnership-browser.mjs",
+      "bytes": 3200,
+      "sha256": "6ca332b11188c6373be2045c67850d336a06c49adfa6c2bd7bd3b592cf8278dc"
+    },
+    {
+      "path": "test-deployment/scripts/published-nine-e2e.mjs",
+      "bytes": 33793,
+      "sha256": "b6573a552b18777e3830e247fcbfd8bb2ce73a5168761316703401e401dde1f4"
+    },
+    {
+      "path": "test-deployment/scripts/reconcile-published-nine.mjs",
+      "bytes": 7362,
+      "sha256": "671da6aaa5039cd211fea95df7d3f645bbb9ffb1d30b3e9c39d8f76127ce9634"
+    },
+    {
+      "path": "test-deployment/scripts/run-base-sepolia.ts",
+      "bytes": 19464,
+      "sha256": "68e01c0820e58dc9a026baa7e97b88659a31bb5ec0191dff298e686e08039659"
+    },
+    {
+      "path": "test-deployment/scripts/run-scenario.ts",
+      "bytes": 4402,
+      "sha256": "9331440dce195be9818000827e68f64f24fe06cf4a04075aa7f6fc66efaab0ed"
+    },
+    {
+      "path": "test-deployment/scripts/sale-browser-e2e.mjs",
+      "bytes": 10440,
+      "sha256": "c73828267d6dc72670cf6c4e20fa9f87d667e9ced16cbe9c4b6b75200f2a7344"
+    },
+    {
+      "path": "test-deployment/scripts/sale-local-runner.mjs",
+      "bytes": 1285,
+      "sha256": "c357de3bcc2c642b9f2e7b3d6f3eb21789ef327005ac2929a04233a333eea9a2"
+    },
+    {
+      "path": "test-deployment/scripts/share-browser-e2e.mjs",
+      "bytes": 9557,
+      "sha256": "345f4a3bd26c607e9f232042cdf3a9ca944cd97f1e1a4ae39c3a92570cba88de"
+    },
+    {
+      "path": "test-deployment/scripts/share-local-runner.mjs",
+      "bytes": 1288,
+      "sha256": "98684b4d2b95b0141b7f0f71e981b4d378721c082504eaa5a3cb9f19c1ad72bf"
+    },
+    {
+      "path": "test-deployment/scripts/site-browser-smoke.mjs",
+      "bytes": 1992,
+      "sha256": "cf57fe7e2a00daf2339b960f9120f763f8836a25e78633d5ceb384db7d510376"
+    },
+    {
+      "path": "test-deployment/scripts/site-browser.mjs",
+      "bytes": 1798,
+      "sha256": "79b67350115c86e820b6d279959b6c1d09a2c20c266dce03e5b0c0c3277e8670"
+    },
+    {
+      "path": "test-deployment/scripts/site-visual-smoke.mjs",
+      "bytes": 1793,
+      "sha256": "6835cafa591a343400b42db8b464772018da9f08babcd3601cb9668158f8525e"
+    },
+    {
+      "path": "test-deployment/scripts/ui-ux-residual-regression.mjs",
+      "bytes": 4642,
+      "sha256": "b3e5db856ada9b14afab999ce76f703271b321eb5e108965d208e2330bfd3af9"
+    },
+    {
+      "path": "test-deployment/scripts/ux-audit-regression.mjs",
+      "bytes": 1745,
+      "sha256": "006f90874f46bc2fb2a5820439cbcff351423e0f43082a9e689a7403a4f3c74f"
+    },
+    {
+      "path": "test-deployment/shares.html",
+      "bytes": 7524,
+      "sha256": "3f9d3b1c7b2a45fa106e54430c18ccbee6c80b5969c437f83a55ba8e780012d9"
+    },
+    {
+      "path": "test-deployment/src/agreement.ts",
+      "bytes": 867,
+      "sha256": "68ebfe404f133a1eb7626abe1f6245bd45cdc90f200f1e051189504c6110d40d"
+    },
+    {
+      "path": "test-deployment/src/contract-provenance.ts",
+      "bytes": 1972,
+      "sha256": "651a65d33349c0ddd8397ed636f1a80bf6d19ec7cba2488f4e6c48f48fb5882a"
+    },
+    {
+      "path": "test-deployment/src/exclusive-formation-provenance.ts",
+      "bytes": 4110,
+      "sha256": "4dbe4f8dca676959aebb3e747a7038db1cdb3ded601ae80f83b5dec3e53a17bb"
+    },
+    {
+      "path": "test-deployment/src/exclusive-package-provenance.ts",
+      "bytes": 1608,
+      "sha256": "7b8d8118668c5663bf1970db40975185e69814f2ed67d08dc33d2a58fb2ee176"
+    },
+    {
+      "path": "test-deployment/src/formation-document.ts",
+      "bytes": 2267,
+      "sha256": "c6612f75263f015a19dce9a54c6871113c494617a3305830e66142331365725b"
+    },
+    {
+      "path": "test-deployment/src/formation-provenance.ts",
+      "bytes": 3834,
+      "sha256": "a3694dd67a3dcd577bf8e43b6786fb413ae9f3a87843e39156a9401c87ace2af"
+    },
+    {
+      "path": "test-deployment/src/formation.ts",
+      "bytes": 2579,
+      "sha256": "daef32570da60f7f2028b5c8c21bdb2ff1de87f64b4610a57682161f19c52feb"
+    },
+    {
+      "path": "test-deployment/src/historical-verify.ts",
+      "bytes": 16301,
+      "sha256": "0b2500759fc4e7b91b243ba45d5f6c81404f97f36e86cb869ef3ee851ee0d1f0"
+    },
+    {
+      "path": "test-deployment/src/identity-hash-v2.ts",
+      "bytes": 3648,
+      "sha256": "1a99ed0f155eea8f0715be50642045faaf2096b6f58b5a12a92412123fe9e7e6"
+    },
+    {
+      "path": "test-deployment/src/immutable-runtime.ts",
+      "bytes": 1488,
+      "sha256": "8a8f7d274d46e5057064bfd93e3016f3637f243bb5d83dd91b56ee8a79393ef5"
+    },
+    {
+      "path": "test-deployment/src/offer-evidence.ts",
+      "bytes": 1656,
+      "sha256": "dc95cbb99b9e44cc7f0e8161b872894463ad458a53bf589f7c223a27c54c38cd"
+    },
+    {
+      "path": "test-deployment/src/package-document.ts",
+      "bytes": 366,
+      "sha256": "b0b8911ad8c6405d5872ccd2ef5349b0133896ab5a48023ed9f0a22d5fa62a40"
+    },
+    {
+      "path": "test-deployment/src/package-provenance.ts",
+      "bytes": 2511,
+      "sha256": "5441fc4734e64fffda4ba1a82c8cd303759d8bc20bb0786c06a22e0089e41ff6"
+    },
+    {
+      "path": "test-deployment/src/share-nft.ts",
+      "bytes": 1834,
+      "sha256": "02e3ce208728fe29ad09701d11ebaf8e587e010404307d30204ea9bb0d3d5b8c"
+    },
+    {
+      "path": "test-deployment/src/share-sale.ts",
+      "bytes": 638,
+      "sha256": "b00dcaf8255894268fe09622414fc571a8af3b86d9ba34894cb5c5f0bb15d0cd"
+    },
+    {
+      "path": "test-deployment/src/share-ui.ts",
+      "bytes": 2367,
+      "sha256": "c54c62fd58b3e6aaf4b6cec1ac0b3105e5b4345a63f4b573dd99d12bf4f60b9b"
+    },
+    {
+      "path": "test-deployment/src/share-units.ts",
+      "bytes": 4164,
+      "sha256": "1f11265921c111acc7b1cbb6d4e90449dc371437d9f7285a0023b8825e90f298"
+    },
+    {
+      "path": "test-deployment/src/synthetic-fixture.ts",
+      "bytes": 893,
+      "sha256": "25b501b858b1ae83319e82e56ff8091648d7aaaa767ab96510434f63dcc27e87"
+    },
+    {
+      "path": "test-deployment/terms.html",
+      "bytes": 4088,
+      "sha256": "7e69f7c70667d1ae8cd765d5e5424e5aefd9e0b8b82a8791ff9fe5214cdbfc54"
+    },
+    {
+      "path": "test-deployment/test/DPA.test.ts",
+      "bytes": 2670,
+      "sha256": "d366ab2f0e12cd94a589f7acfc9ba6de53e154d9a7f15d1898f6bc18f433316b"
+    },
+    {
+      "path": "test-deployment/test/DPAFormation.test.ts",
+      "bytes": 3627,
+      "sha256": "60af1c7a36270e4e57ea9d6d3b70256126d6e118fb1533a175134685b04586a5"
+    },
+    {
+      "path": "test-deployment/test/DPAPackage.test.ts",
+      "bytes": 14661,
+      "sha256": "b53eb8b858bd2c147b2505acafbe513bb168345fc0db8c368b763c427b1ca50b"
+    },
+    {
+      "path": "test-deployment/test/DPAShareLoan.test.ts",
+      "bytes": 6568,
+      "sha256": "95e528e622e9f227acaab96b4ae5ad2bf91c1ad9493208bab388d034d40dd9da"
+    },
+    {
+      "path": "test-deployment/test/DPAShareNFT.test.ts",
+      "bytes": 8700,
+      "sha256": "c5d9c47eafa2bda6953daf402360d93462ae4c581485959c3a6c1405d9475702"
+    },
+    {
+      "path": "test-deployment/test/DPAShareSale.test.ts",
+      "bytes": 4745,
+      "sha256": "f270df245d61da5efcc4b21fc85faa7046f18154898a1167606cf77617b47ddb"
+    },
+    {
+      "path": "test-deployment/test/DPAShareUnits.test.ts",
+      "bytes": 4563,
+      "sha256": "9f0b749ac00d25962f4efb7bc792cd4a26918a2c7625668a3c5dc7dd4a9f5d10"
+    },
+    {
+      "path": "test-deployment/test/ExclusivePackage.test.ts",
+      "bytes": 3022,
+      "sha256": "750f7efdd351476d844aee307d36df4d54ff4d5e3569daa4a08d26ae26788980"
+    },
+    {
+      "path": "test-deployment/test/ExclusiveProvenance.test.ts",
+      "bytes": 1318,
+      "sha256": "612f3722e43ef9bffd2e764c9110a624e66f0c45367999082e96c1342df9b7cb"
+    },
+    {
+      "path": "test-deployment/test/SDT.test.ts",
+      "bytes": 1184,
+      "sha256": "4716d2c6c8e1c8f5cda7cb45907f742f37ef52fd0f9cf5b64dd8bff23b76da87"
+    },
+    {
+      "path": "test-deployment/test/agreement.test.ts",
+      "bytes": 685,
+      "sha256": "628d200ba949a7c6025c2fe2f69fbf7dc0b8758df71b2107967ec42dee6d9fec"
+    },
+    {
+      "path": "test-deployment/test/bank-trace-ui.test.mjs",
+      "bytes": 3148,
+      "sha256": "6413a1ae5fd03614c79c795bd01be8a09404aec2308a1035901dc8e5fa5f4b04"
+    },
+    {
+      "path": "test-deployment/test/base-sepolia-budget.test.ts",
+      "bytes": 914,
+      "sha256": "1e33f32591f1c2ea80d9e564970ba6041896718c3b6507cbe6673de1362ffc57"
+    },
+    {
+      "path": "test-deployment/test/base-sepolia-journal.test.ts",
+      "bytes": 4647,
+      "sha256": "c3ecb91e4ee195f00d34720eff20403a13b5d496501a7507189effeeb33bb3d8"
+    },
+    {
+      "path": "test-deployment/test/base-sepolia-run-state.test.ts",
+      "bytes": 4135,
+      "sha256": "42a6a00c31120065982fa1cc03d920d8d268786165e79106783d23c7d1f3505b"
+    },
+    {
+      "path": "test-deployment/test/base-sepolia-ui.test.ts",
+      "bytes": 418,
+      "sha256": "9971f2324ac30d553d3b5b5e9bada10d2b051eae773e7907dc2a1d7119f087b3"
+    },
+    {
+      "path": "test-deployment/test/client-guards.test.ts",
+      "bytes": 2050,
+      "sha256": "833ef5857be3d46417ab51c9567b015519271a4fe85bbef4646753769e8184a7"
+    },
+    {
+      "path": "test-deployment/test/formation-document.test.ts",
+      "bytes": 1512,
+      "sha256": "0d4c8ce00d7681408557f12c4c9a1c08e77106d311a395f33887f46fc37eca3d"
+    },
+    {
+      "path": "test-deployment/test/formation-logic.test.ts",
+      "bytes": 2309,
+      "sha256": "49ef9874bfd3aa15a57a1b3d4f2a865f510b7ef0871deb42a266aad6f3a9210b"
+    },
+    {
+      "path": "test-deployment/test/formation-provenance.test.ts",
+      "bytes": 2972,
+      "sha256": "4c119310af04fcf3f42fba67883e491c61f7a16eff0062f435b8bd5a3df858e4"
+    },
+    {
+      "path": "test-deployment/test/formation-storage.test.ts",
+      "bytes": 1340,
+      "sha256": "b70f8153dbb980c5d52a711eee7a37413354e8711896ab41e1b0b2e6da0479e8"
+    },
+    {
+      "path": "test-deployment/test/historical-page.test.mjs",
+      "bytes": 1019,
+      "sha256": "b4afd164396bd6ceae6d90d1dcfb010b863224419dd6f844bb6a243fefa51766"
+    },
+    {
+      "path": "test-deployment/test/historical-rpc.test.ts",
+      "bytes": 1358,
+      "sha256": "607edd03bf6cf929bf1140f8d1218ea33611cfbad617163b729078457c99729e"
+    },
+    {
+      "path": "test-deployment/test/historical-verify.test.ts",
+      "bytes": 2820,
+      "sha256": "99f50ceaf98370000e714071ab3f93c4dc3e20e7399614f6f18dbddbeef167a5"
+    },
+    {
+      "path": "test-deployment/test/identity-hash-browser.test.mjs",
+      "bytes": 1970,
+      "sha256": "a9eb14c5c6eee3c5aeb35197626d3c6d4ed2cd224c98cad7d4bb2d455e9b1945"
+    },
+    {
+      "path": "test-deployment/test/identity-hash-v2.test.ts",
+      "bytes": 2429,
+      "sha256": "e402624ed20145d02e161fcc120d3d7190de1a5f1df303f856ec624707d9405a"
+    },
+    {
+      "path": "test-deployment/test/index1-preview-browser.test.mjs",
+      "bytes": 3908,
+      "sha256": "2c4c38656721ed7cde5863d90797be97652c632fe19a3d213690511cd4e04482"
+    },
+    {
+      "path": "test-deployment/test/index1-preview.test.mjs",
+      "bytes": 4060,
+      "sha256": "13cb03dc8c3bbf88808a78fffb13d810d544698f89873b8b458e4aefc6f97562"
+    },
+    {
+      "path": "test-deployment/test/invariants.test.ts",
+      "bytes": 2325,
+      "sha256": "438cc6ad06dec9fafa7a80747afa34b0562e4cab8159836affecb40f98e19f3e"
+    },
+    {
+      "path": "test-deployment/test/legal-notices.test.ts",
+      "bytes": 3490,
+      "sha256": "de90e96693c90a4b3a947f9c36455767b34801b5b07e4fcfb7988e16e29c5ac9"
+    },
+    {
+      "path": "test-deployment/test/obsolete-public-example.test.mjs",
+      "bytes": 1418,
+      "sha256": "f49ae0ae8c3bfc594323fe966a9b1781f0d02ce66a48147c8861a85803d5dbcc"
+    },
+    {
+      "path": "test-deployment/test/offer-evidence.test.ts",
+      "bytes": 1923,
+      "sha256": "83c158bae4387d48d16dc6ff00526e23eb2cd219be282c8116d735b11c8ffefc"
+    },
+    {
+      "path": "test-deployment/test/operator-disclosure.test.ts",
+      "bytes": 791,
+      "sha256": "88f52eadaa29257d0471ad09ee57d536bc7c3e3c85e11826e586c133fe0555fa"
+    },
+    {
+      "path": "test-deployment/test/orcid-visible-label.test.mjs",
+      "bytes": 1241,
+      "sha256": "a7c7e7d94143d491143867197cf5c9350e19ae7d7c215bcb18f85616776a9408"
+    },
+    {
+      "path": "test-deployment/test/package-evidence-ui.test.mjs",
+      "bytes": 623,
+      "sha256": "d14c6dacc3ea3f0f6a4094b83df8979ba768a53c962bc37dd19588eb41355c12"
+    },
+    {
+      "path": "test-deployment/test/partnership-workspace.test.mjs",
+      "bytes": 2389,
+      "sha256": "69de7b4dab5493042f2c151fef020178b9332e56354ec13f492c2728511f12af"
+    },
+    {
+      "path": "test-deployment/test/published-integration-regressions.test.ts",
+      "bytes": 1906,
+      "sha256": "9920a40d84b3b88e3cfb8e3c98954ec3726df2092d05baf4b661f8e66b3e93bb"
+    },
+    {
+      "path": "test-deployment/test/sdt-passport-copy.test.mjs",
+      "bytes": 1889,
+      "sha256": "f7d7de6422fe872f004f3c8bd1e11a145b170e64e25eeab1738fbbc95527fa0e"
+    },
+    {
+      "path": "test-deployment/test/share-page.test.ts",
+      "bytes": 753,
+      "sha256": "8f86c8d5a66250ab082b4b2ed2affc232f70905b013ca0216bee1c067d80b186"
+    },
+    {
+      "path": "test-deployment/test/share-sale-ui.test.ts",
+      "bytes": 1490,
+      "sha256": "838f2022849e28f33113fae7913bc7fda8b30d6f4e5cc3b458de3e0fc4c55faa"
+    },
+    {
+      "path": "test-deployment/test/share-ui.test.ts",
+      "bytes": 3249,
+      "sha256": "a976c256bd98070f06ff3bfa0b13650fb0fb84fe1451e2f890960fc74ab58921"
+    },
+    {
+      "path": "test-deployment/test/site-audit.test.ts",
+      "bytes": 1411,
+      "sha256": "b08021e10645de7bd7d48377ecf367cd7e759da066a7c65919e2d4575639c293"
+    },
+    {
+      "path": "test-deployment/test/site-copy-cleanup.test.mjs",
+      "bytes": 3715,
+      "sha256": "3e8531dda4701da21a11ec3cc40e7a7afb4d946ce7c771c6bff379d2b6b871fc"
+    },
+    {
+      "path": "test-deployment/test/site-design-contract.test.mjs",
+      "bytes": 2165,
+      "sha256": "79b0151f2b3ccdf9309b3ccca83bace7534baaa7b4bea90e2f52cf54bbce388d"
+    },
+    {
+      "path": "test-deployment/test/site-guidelines.test.mjs",
+      "bytes": 2106,
+      "sha256": "e4b1e1d11ecb5f154ba814b274535e51d53031cede6347bccd5576973b5df81c"
+    },
+    {
+      "path": "test-deployment/test/site-header-five-links.test.mjs",
+      "bytes": 2017,
+      "sha256": "1ca35519415a9b12f50e2ad3ccd1ab99cde5f583355d26e5b0f6e4d13a6a1441"
+    },
+    {
+      "path": "test-deployment/test/site-language.test.ts",
+      "bytes": 522,
+      "sha256": "610516e7d6ac25b6b2701c71b7c3bcdfb017c410410c8a4a62f3183738dd15eb"
+    },
+    {
+      "path": "test-deployment/test/site-redesign.test.ts",
+      "bytes": 3673,
+      "sha256": "dc31e0b4de4378020216b47ded8591ff02c65fdd889e54e3ed66963dc7c7d13b"
+    },
+    {
+      "path": "test-deployment/test/site-typography.test.mjs",
+      "bytes": 3344,
+      "sha256": "d8e7a67e07d23b29a068af28781fa0ea3bac6ec76a29f7305e2218c7b0a75a0c"
+    },
+    {
+      "path": "test-deployment/test/verify-navigation.test.mjs",
+      "bytes": 1538,
+      "sha256": "aa931c7dc26dce829bd0dd13939363a916dcfba30fcdedfff2213a28c47c03f9"
+    },
+    {
+      "path": "test-deployment/test/version-copy.test.mjs",
+      "bytes": 1082,
+      "sha256": "20c02a996392b3eb4aa56c66094a6371a9231dc9944242f474ef8ac0cc36d9e5"
+    },
+    {
+      "path": "test-deployment/test/visible-brand.test.mjs",
+      "bytes": 1613,
+      "sha256": "0f6421155cb216881438bf7e0edf1c7522b43466a39f7e6a06acf176791c4ebf"
+    },
+    {
+      "path": "test-deployment/verify.html",
+      "bytes": 7108,
+      "sha256": "a32397f4b45db72aa589cc86af689f374399634496487602bbb82a15dec27386"
+    },
+    {
+      "path": "test-deployment/vite.config.ts",
+      "bytes": 317,
+      "sha256": "79f80715218e4fa8870697cf9d37762e4b6d2d59fa98b96d023d3b825d63f794"
+    }
+  ],
+  "excludedSourceFiles": [
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/accept-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/accept-bob-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/claim-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/claim-bob-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/deploy-formation-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/deploy-units-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/manifest.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/mint-sdt-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/mint-sdt-bob-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/2026-10-15-two-party/verification.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/accept-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/accept-bob-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/approve-loan-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/approve-loan-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/approve-sale-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/buy-sdt-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/claim-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/claim-bob-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/deploy-formation-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/deploy-loan-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/deploy-package-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/deploy-sale-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/fund-loan-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/loan-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/manifest.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/offer-sdt-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/pledge-bob-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/recover-collateral-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/release-pledge-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/repay-loan-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/split-alice-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/withdraw-principal-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/withdraw-repayment-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    },
+    {
+      "path": "docs/evidence/base-sepolia/nft-package-pilot/withdraw-sale-receipt.json",
+      "reason": "superseded pilot archive; current publication keeps exclusive package and published-nine evidence"
+    }
+  ]
+}

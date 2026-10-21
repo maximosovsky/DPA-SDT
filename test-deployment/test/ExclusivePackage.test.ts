@@ -1,0 +1,31 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import hre from 'hardhat';
+import {keccak256,stringToHex} from 'viem';
+const {viem}=await hre.network.connect();
+const hash=(s:string)=>keccak256(stringToHex(s));
+test('atomic canonical NFT issuance rejects legacy units and duplicate package issuers in either order',async()=>{
+ const [alice,bob]=await viem.getWalletClients(),pub=await viem.getPublicClient();
+ const sdt=await viem.deployContract('SDT');
+ await sdt.write.mint([hash('Alice')],{account:alice.account});await sdt.write.mint([hash('Bob')],{account:bob.account});
+ const factory=await viem.deployContract('ExclusivePackageFactory');
+ await factory.write.create([sdt.address,hash('agreement'),'exclusive-v2','',[alice.account.address,bob.account.address],[60,40]]);
+ const events=await pub.getContractEvents({address:factory.address,abi:factory.abi,eventName:'Created'});
+ const formation=events[0].args.formation!,collection=events[0].args.collection!;
+ const f=await viem.getContractAt('ExclusiveDPAFormation',formation),n=await viem.getContractAt('DPAPackageNFTV2',collection);
+ assert.equal((await f.read.issuer()).toLowerCase(),collection.toLowerCase());
+ await assert.rejects(viem.deployContract('DPAShareUnits',[formation]));
+ await assert.rejects(viem.deployContract('DPAPackageNFT',[formation]));
+ await assert.rejects(viem.deployContract('DPAPackageNFTV2',[formation]));
+ await assert.rejects(n.write.claim({account:alice.account}));
+ const types={Accept:[{name:'wallet',type:'address'},{name:'agreementHash',type:'bytes32'},{name:'versionHash',type:'bytes32'},{name:'participantsHash',type:'bytes32'},{name:'sdt',type:'address'},{name:'tokenId',type:'uint256'},{name:'identityHash',type:'bytes32'},{name:'nonce',type:'uint256'}]} as const;
+ for(const [w,token,identity] of [[alice,1n,hash('Alice')],[bob,2n,hash('Bob')]] as const){const nonce=await f.read.nonces([w.account.address]);const signature=await w.signTypedData({account:w.account,domain:{name:'Experimental DPA Formation',version:'1',chainId:await pub.getChainId(),verifyingContract:formation},types,primaryType:'Accept',message:{wallet:w.account.address,agreementHash:await f.read.agreementHash(),versionHash:await f.read.versionHash(),participantsHash:await f.read.participantsHash(),sdt:sdt.address,tokenId:token,identityHash:identity,nonce}});await f.write.accept([w.account.address,token,nonce,signature],{account:w.account})}
+ await n.write.claim({account:alice.account});await n.write.claim({account:bob.account});
+ assert.equal(await n.read.totalClaimed(),10000n);assert.equal(await n.read.activeQuantity(),10000n);
+ await assert.rejects(n.write.claim({account:alice.account}));
+ await assert.rejects(viem.deployContract('DPAShareUnits',[formation]));
+ await assert.rejects(viem.deployContract('DPAPackageNFTV2',[formation]));
+ await n.write.split([2n,[3000n,1000n]],{account:bob.account});
+ assert.equal(await n.read.activeQuantity(),10000n);
+ assert.deepEqual(await n.read.childrenOf([2n]),[3n,4n]);
+});

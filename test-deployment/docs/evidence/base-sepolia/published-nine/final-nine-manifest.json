@@ -1,0 +1,324 @@
+{
+  "host": "https://maximosovsky.github.io/Decentralized-Partnership-Agreements-DPA-Self-Declared-Tokens-SDT/",
+  "chainId": 84532,
+  "provider": "Playwright EIP-1193 controlled-test-wallet adapter; no MetaMask extension",
+  "manualMetaMask": false,
+  "head": {
+    "number": "48297884",
+    "hash": "0xc1d3b24925a64cbb803804db21d59b4ef855eab4520f4363a88761aa3f4d035f"
+  },
+  "scenarios": {
+    "1": {
+      "status": "passed",
+      "subactions": [
+        "1"
+      ]
+    },
+    "2": {
+      "status": "passed",
+      "subactions": [
+        "2"
+      ]
+    },
+    "3": {
+      "status": "passed",
+      "subactions": [
+        "3-alice",
+        "3-bob"
+      ]
+    },
+    "4": {
+      "status": "passed",
+      "subactions": [
+        "4-alice",
+        "4-bob"
+      ]
+    },
+    "5": {
+      "status": "passed",
+      "subactions": [
+        "5"
+      ]
+    },
+    "6": {
+      "status": "passed",
+      "subactions": [
+        "6-transfer",
+        "6-sdt-offer",
+        "6-sdt",
+        "6-no-sdt-offer",
+        "6-no-sdt"
+      ]
+    },
+    "7": {
+      "status": "passed",
+      "subactions": [
+        "operator-loan",
+        "7-pledge",
+        "7-release-new",
+        "7-offer",
+        "7-fund",
+        "7-borrower-withdraw",
+        "7-repay",
+        "7-recover",
+        "7-lender-withdraw",
+        "7-unfunded",
+        "7-unfunded-cancel"
+      ]
+    },
+    "8": {
+      "status": "passed",
+      "subactions": [
+        "8"
+      ]
+    },
+    "9": {
+      "status": "passed",
+      "subactions": [
+        "9"
+      ]
+    }
+  },
+  "scenarioCount": 9,
+  "transactions": {
+    "count": 31,
+    "receipts": [
+      {
+        "hash": "0xdf7c7a01b1afa06340dedd685b99d4a8b409513b96f1a0f595b4093f855ed53b",
+        "block": "48296011",
+        "blockHash": "0xe4da3840a159f7c1750583910fa1671ef92547f0955602ec44336656990f8abb",
+        "status": "success"
+      },
+      {
+        "hash": "0xd311988315c60f14a9fcafb540b2dbc9e9f1a2482569255b9580e1f000cb303f",
+        "block": "48296066",
+        "blockHash": "0x205cb298948c3f1ca2d6a2f00133850801498509514af68c4d6b92dc07e97b41",
+        "status": "success"
+      },
+      {
+        "hash": "0x30ca2e5d3feb0ab71e0d03b192a9e1f3bdd69a0e98b1daf8f9893e9797c51344",
+        "block": "48296068",
+        "blockHash": "0xacb283da7fee3b5fd6b24121aa847bcea939ec8d0c2090420e8b98c6bed42599",
+        "status": "success"
+      },
+      {
+        "hash": "0xfc25ea8d7add412d3a009994fc81defc8035dd3579244ad50e4f3809d77a51eb",
+        "block": "48296198",
+        "blockHash": "0x13f8a63a1d955bbfd2f370ca9f71da5a67dce541e4555e013370321c89973e1f",
+        "status": "success"
+      },
+      {
+        "hash": "0x88bd394b1689be0975584e9388bffef1775c543cc4e1e26b6558c14e66a179ea",
+        "block": "48296207",
+        "blockHash": "0x07e5fe25bf37bf00bce08e206e78d44cf42326157d70b20fc6a35e5d5d724b5e",
+        "status": "success"
+      },
+      {
+        "hash": "0xc2b374d783d11a447a62d7e3ae3cace46a145e3c02ea0588fb0b370de97cbaf6",
+        "block": "48296282",
+        "blockHash": "0x46358bca2f84427f8141ee61309f65a4457b06ef964277f27bead54cb3d2882f",
+        "status": "success"
+      },
+      {
+        "hash": "0x8dcad320462e518c25bc213bf7b74c84b93d6fa35ab9de62cd501e86d744c1c4",
+        "block": "48296294",
+        "blockHash": "0x85f2e732d51c62a7934e98838a55c9bff165d50b51bb49d80d59b5554ae3679b",
+        "status": "success"
+      },
+      {
+        "hash": "0x00d33e8104e89cdb8f3700c2ae097aba94893d0a7951d29290974ee006bf4537",
+        "block": "48296342",
+        "blockHash": "0x0443e6fd8c27a6fc9f885f118304128c86ab1c57a2ac73905e8f0fd7fdeb3fe7",
+        "status": "success"
+      },
+      {
+        "hash": "0x086e6133b3141b1f25ff6ed72306e9ffe3814e9f5326ae1400555ad0c50499a1",
+        "block": "48296364",
+        "blockHash": "0x1723f9b454c274abacf04395b6d20f89c05ad1f7cd29e17bad77a997077042e9",
+        "status": "success"
+      },
+      {
+        "hash": "0xba90e33c7fcd06284de049a456847dc29b6e305e6d2b3d7e77e5d3c50a81fde4",
+        "block": "48296523",
+        "blockHash": "0x7f0fb91ed71e58321c95259db15774a80eef6f6efb14fb4129ad4bed4c68f6c2",
+        "status": "success"
+      },
+      {
+        "hash": "0x9b8ecc747e6d75a61e6db6fabe7a2d90aaf28486aa6e07387cb6fa503b870eb4",
+        "block": "48296874",
+        "blockHash": "0x66259606572d66e53a4b33fd9b11e94efc559540f7829597197e8b7ed39fcf45",
+        "status": "success"
+      },
+      {
+        "hash": "0x9a6c9f818b0966921fd85556602270e6f3833a6b9116e7d35b52b1538e4390d7",
+        "block": "48296903",
+        "blockHash": "0x25b3ebf335548598f49f8d36c7e00ce8c795868f2019b796f447e3739cdb048e",
+        "status": "success"
+      },
+      {
+        "hash": "0x1d21da199f57e2d03878c85988e6cbae89c906db8db2318ccb2023185ec8ef1c",
+        "block": "48296946",
+        "blockHash": "0x912d72258d86f9ca6b7c9f1d0a9209abc3087a281aa0fd0b62fb399e5e33cac9",
+        "status": "success"
+      },
+      {
+        "hash": "0x738886199525c5c7b14086d46bf98639351f27f0c96be4df180c6748e8a3443f",
+        "block": "48296959",
+        "blockHash": "0x2a01205d8b9ea14aab9b7f2681f4fc1344a0e651338584be4d56f27116a1afa2",
+        "status": "success"
+      },
+      {
+        "hash": "0xd8eb45b1f8473b7aa9f54fd7cf54e72629acf94721349ad29298e3513676b7c0",
+        "block": "48297059",
+        "blockHash": "0x17ae56cd0e0ce147f296084b231696004e528c5da0ae9b74ed3fd2fedd9fd687",
+        "status": "success"
+      },
+      {
+        "hash": "0xa2b76789eb0210152664f60f9fdb30c7a3c97aecb47469d711ceb0cf383311b5",
+        "block": "48297089",
+        "blockHash": "0x4769ee2cb4b83ac911d178a1e8c1ea0311e16339800a297071bb5ba73b8a6e05",
+        "status": "success"
+      },
+      {
+        "hash": "0x8e4aa3f33975381dcab0a0ce24f49ed257ccfd6dbbf9e2eb2e725b6d263a2ce4",
+        "block": "48297101",
+        "blockHash": "0xd4374a578cf87f37a4c569ca65e7a24aabb9194eef7cee63258d3cb82c2bd4cc",
+        "status": "success"
+      },
+      {
+        "hash": "0x273c4a347521521336e951971d193ae9d7f32c339e665774c18e9874e8ab74aa",
+        "block": "48297145",
+        "blockHash": "0x2db3cc33c81dc0525b08eca1520ae2e26013b74bc1eb80396cb88478d5a1193b",
+        "status": "success"
+      },
+      {
+        "hash": "0xc0073c31f4f3c8655a8d68a00666d68d2fb06421c81b4fa1437c17a9da9235c4",
+        "block": "48297188",
+        "blockHash": "0x1ba7c0d7aecf1bfa0ac6cf51290219e5be08057db329bdd221b18f52aafc7b11",
+        "status": "success"
+      },
+      {
+        "hash": "0xf5767877afd6a1f388137414795ee80e4e60c54d8f9d9488e8488a936f34b933",
+        "block": "48297197",
+        "blockHash": "0xb4e6fbb2ec6e31e8eae7270da401d3948ec892057ad917ecf048b12987780c53",
+        "status": "success"
+      },
+      {
+        "hash": "0x13fc05f12dd2f1210acd4cb676c84ee973b3fa77ad15dbc9d468c47dbd46a009",
+        "block": "48297231",
+        "blockHash": "0xa2b2bd3b8bbb292464301e759bceb731682c1e1e2e730e378f524f6f581f9e9c",
+        "status": "success"
+      },
+      {
+        "hash": "0x2941f219637f189bff8827d6a5c58a1ca140b152c6c776a5195916a00748dde5",
+        "block": "48297255",
+        "blockHash": "0x90a4c78e1439426153bcdae820f9cce422bfd09eb3558a7370e8f15d3273e837",
+        "status": "success"
+      },
+      {
+        "hash": "0x7413518bcd7246054233929f772e37baca6c68e25def114655519c4383da74cb",
+        "block": "48297262",
+        "blockHash": "0x1289ad131c531aeb357b42459642263d34474ac1fd23548f657265547e592652",
+        "status": "success"
+      },
+      {
+        "hash": "0xacfc9b2e8e06ed3323abb05594203a85d3ec482fe7d803658b1b2674ad1683e2",
+        "block": "48297290",
+        "blockHash": "0x081fbd2e84b642fcaeed13f09244b3e3d3425ceafbb4b986558eda47174d1a63",
+        "status": "success"
+      },
+      {
+        "hash": "0x026e3afd74e45973e13b95ea32c79603e8fe6525339f96a910416cfe7d675ed6",
+        "block": "48297311",
+        "blockHash": "0x0f4fb85005a9403058cbc2e4f99c27b7e903096ebf5572e7994f58e1b34cceee",
+        "status": "success"
+      },
+      {
+        "hash": "0x3b29b3566f5ca1a3cdff76301673c2989e0f6a7530190816846e97848fbd0b12",
+        "block": "48297716",
+        "blockHash": "0x994f3394796d24e86bc97160221588a3a90321fab1dec8f4c89630f23b13702f",
+        "status": "success"
+      },
+      {
+        "hash": "0xe4e361552245ed25679609c47c22c152733a30d253a71525090f2d66f5cbaa44",
+        "block": "48297740",
+        "blockHash": "0x106a3c6b9e420e0e98201b9cc7a559883989ae5ff082de1cc93176ef82d647f1",
+        "status": "success"
+      },
+      {
+        "hash": "0x8788f1ca065bb0a2d647907d854509d7f4440e3257486ac93bcf2fa29c064d2f",
+        "block": "48297771",
+        "blockHash": "0x3256d1c7eb866369ef0e601726f8501a7bdc370fe8a6d4245e550ee064eba278",
+        "status": "success"
+      },
+      {
+        "hash": "0xd1a3a3e2bf5d3cbee435608be6a2be925d9664bd6854d8d6a0695da7427c817d",
+        "block": "48297798",
+        "blockHash": "0x8fb65fa6c9e23bda4d9e4b29aa3577ca0485e0bf494dd41296772c7fe13e3457",
+        "status": "success"
+      },
+      {
+        "hash": "0x39a049a2f6b13d9d45546a5003f4eda38763f1e446a6c60f2d26fd5bb22739bb",
+        "block": "48297807",
+        "blockHash": "0x5d8e1b8a4665ec91a66dbf254124261afa287f13dcd5950858909b02bd1e30c3",
+        "status": "success"
+      },
+      {
+        "hash": "0x5840b01269c531adebb0820bdaab5314c6d8ec8d1fb3a671fa512d87d9bb2c14",
+        "block": "48297837",
+        "blockHash": "0xa3f32deda059f9492c88dc13be5ed205385ddbee4f18fc48c074278d2d3b813b",
+        "status": "success"
+      }
+    ]
+  },
+  "formation": "0x710c30a2b84ab72c022e70716a504Bea38754c65",
+  "collection": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+  "sale": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+  "loan": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+  "loanLifecycle": {
+    "pledgePosition": "1",
+    "fundedPosition": "2",
+    "cancelledUnfundedPosition": "3",
+    "principalWei": "10000",
+    "repaymentWei": "11000",
+    "interestWei": "1000",
+    "borrowerWithdrawalWei": "10000",
+    "lenderWithdrawalWei": "11000",
+    "withdrawalCreditsAfterWei": "0",
+    "cancelledOfferHadFunding": false,
+    "positionsClosed": true,
+    "returnedOwners": {
+      "2": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "3": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "4": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12"
+    }
+  },
+  "packageChildren": {
+    "parent": "1",
+    "parentBurned": true,
+    "ids": [
+      "3",
+      "4"
+    ],
+    "sumQuantity": "6000"
+  },
+  "saleState": [
+    {
+      "id": "1",
+      "status": "2"
+    },
+    {
+      "id": "2",
+      "status": "2"
+    }
+  ],
+  "privacy": {
+    "defaultExcluded": true,
+    "explicitFictionalIncluded": true
+  },
+  "sourceEvidence": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/evidence.json",
+  "limitations": [
+    "Controlled EIP-1193 test-wallet provider, not manual MetaMask extension.",
+    "Historical blocked/probe entries in source evidence superseded by later successful live UI actions."
+  ]
+}

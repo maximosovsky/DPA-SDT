@@ -1,0 +1,635 @@
+{
+  "host": "https://maximosovsky.github.io/Decentralized-Partnership-Agreements-DPA-Self-Declared-Tokens-SDT/",
+  "chainId": 84532,
+  "provider": "Playwright EIP-1193 controlled-test-wallet adapter; no MetaMask extension",
+  "accounts": [
+    "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+    "0x18FA86747a9eDfbB0B79883aff42A038065A44e5"
+  ],
+  "scenarios": {
+    "1": {
+      "status": "passed",
+      "hashes": [
+        "0xdf7c7a01b1afa06340dedd685b99d4a8b409513b96f1a0f595b4093f855ed53b"
+      ],
+      "tokenId": "6",
+      "digest": "0x07d5740876b148d66ba3b757bee50b6386a9e99026760c00a2e4d536e3b9141d",
+      "note": "Recovered UI submitted receipt after intermittent block RPC; initial browser screenshot unavailable"
+    },
+    "2": {
+      "status": "passed",
+      "hashes": [
+        "0xd311988315c60f14a9fcafb540b2dbc9e9f1a2482569255b9580e1f000cb303f",
+        "0x30ca2e5d3feb0ab71e0d03b192a9e1f3bdd69a0e98b1daf8f9893e9797c51344"
+      ],
+      "formation": "0x710c30a2b84ab72c022e70716a504Bea38754c65",
+      "factory": "0x2B3Ba91f45F0D9Cd8Fed7EBA2382357e5b449C26",
+      "collection": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "documentUrl": "https://maximosovsky.github.io/Decentralized-Partnership-Agreements-DPA-Self-Declared-Tokens-SDT/synthetic-offchain-agreement-exact.txt",
+      "download": "dpa-evidence.json",
+      "note": "UI submitted two successful tx; UI completion status timed out after receipt, recovered from canonical Created event"
+    },
+    "3": {
+      "status": "passed",
+      "hashes": [
+        "0xfc25ea8d7add412d3a009994fc81defc8035dd3579244ad50e4f3809d77a51eb",
+        "0x88bd394b1689be0975584e9388bffef1775c543cc4e1e26b6558c14e66a179ea"
+      ],
+      "tokens": [
+        "6",
+        "5"
+      ]
+    },
+    "4": {
+      "status": "passed",
+      "hashes": [
+        "0xc2b374d783d11a447a62d7e3ae3cace46a145e3c02ea0588fb0b370de97cbaf6",
+        "0x8dcad320462e518c25bc213bf7b74c84b93d6fa35ab9de62cd501e86d744c1c4"
+      ]
+    },
+    "5": {
+      "status": "passed",
+      "hashes": [
+        "0x00d33e8104e89cdb8f3700c2ae097aba94893d0a7951d29290974ee006bf4537"
+      ],
+      "parentState": "2",
+      "children": [
+        "3",
+        "4"
+      ],
+      "portions": [
+        "4000",
+        "2000"
+      ],
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-5.png"
+    },
+    "6": {
+      "status": "passed",
+      "transfer": [
+        "0x086e6133b3141b1f25ff6ed72306e9ffe3814e9f5326ae1400555ad0c50499a1"
+      ],
+      "sdt": [
+        "0x1d21da199f57e2d03878c85988e6cbae89c906db8db2318ccb2023185ec8ef1c",
+        "0x738886199525c5c7b14086d46bf98639351f27f0c96be4df180c6748e8a3443f",
+        "0xd8eb45b1f8473b7aa9f54fd7cf54e72629acf94721349ad29298e3513676b7c0"
+      ],
+      "noSdt": [
+        "0xa2b76789eb0210152664f60f9fdb30c7a3c97aecb47469d711ceb0cf383311b5",
+        "0x8e4aa3f33975381dcab0a0ce24f49ed257ccfd6dbbf9e2eb2e725b6d263a2ce4",
+        "0x273c4a347521521336e951971d193ae9d7f32c339e665774c18e9874e8ab74aa"
+      ],
+      "children": [
+        "3:4000",
+        "4:2000"
+      ]
+    },
+    "7": {
+      "status": "blocked",
+      "reason": "New collection has no verified loan operator and published NFT packages UI has no deploy-loan action; only old pilot loan operator is pinned to old collection",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-blocked.png"
+    },
+    "8": {
+      "status": "Current declaration · 13 fields: matched: Предъявленные сведения соответствуют декларации, сохранённой при принятии соглашения указанным кошельком",
+      "privacyDefaultExcluded": true,
+      "explicitFictionalDisclosureConfirmed": true,
+      "downloads": [
+        "verifier-default.json",
+        "verifier-default.html",
+        "verifier-confirmed-fictional-pii.json"
+      ],
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-8.png"
+    },
+    "9": {
+      "status": "passed",
+      "readonly": true,
+      "noInjectedWallet": true,
+      "overview": "Chain 84532 · Formation 0x710c30a2b84ab72c022e70716a504Bea38754c65\nCollection 0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1 · SDT 0x0b722613e8bCCbE2873336BC970c0Eb0d459082d\nAgreement 0x59cddbb7f03cf84c5ad6b786505b9a89cc064bee9dbd351a106964fcfb036f84 · complete true\nInitial distribution:\n0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12 · 60% · original NFT 1\n0x18FA86747a9eDfbB0B79883aff42A038065A44e5 · 40% · original NFT 2\nClaimed 10000/10000 · active 10000/10000",
+      "token1": "84532:0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1:1\n60% (6000/10000) · Burned\nOwner none (burned or not issued) · original recipient 0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12\nParent none · children 3, 4\nBurned: no transfer, sale, pledge or resplit.",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-9.png"
+    },
+    "3-alice": {
+      "status": "passed",
+      "hashes": [
+        "0xfc25ea8d7add412d3a009994fc81defc8035dd3579244ad50e4f3809d77a51eb"
+      ],
+      "token": "6",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-3-0.png"
+    },
+    "3-bob": {
+      "status": "passed",
+      "hashes": [
+        "0x88bd394b1689be0975584e9388bffef1775c543cc4e1e26b6558c14e66a179ea"
+      ],
+      "token": "5",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-3-1.png"
+    },
+    "4-alice": {
+      "status": "passed",
+      "hashes": [
+        "0xc2b374d783d11a447a62d7e3ae3cace46a145e3c02ea0588fb0b370de97cbaf6"
+      ],
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-4-0.png"
+    },
+    "4-bob": {
+      "status": "passed",
+      "hashes": [
+        "0x8dcad320462e518c25bc213bf7b74c84b93d6fa35ab9de62cd501e86d744c1c4"
+      ],
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-4-1.png"
+    },
+    "6-transfer": {
+      "status": "passed",
+      "hashes": [
+        "0x086e6133b3141b1f25ff6ed72306e9ffe3814e9f5326ae1400555ad0c50499a1"
+      ],
+      "token": "4",
+      "recipient": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-6-transfer.png"
+    },
+    "6-sale": {
+      "status": "blocked",
+      "pilot": "0xeBF20fF61DCA7d8867CAff4d5C9b855D570827eb",
+      "message": "Error: Off-chain agreement must be retrieved from this same HTTPS origin",
+      "noTransaction": true,
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-6-sale-blocked.png"
+    },
+    "operator-sale": {
+      "status": "passed",
+      "address": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+      "hashes": [
+        "0x9b8ecc747e6d75a61e6db6fabe7a2d90aaf28486aa6e07387cb6fa503b870eb4"
+      ],
+      "note": "UI deployment receipt successful; later read-only verified canonical operator after RPC code propagation"
+    },
+    "operator-loan": {
+      "status": "passed",
+      "address": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "hashes": [
+        "0x9a6c9f818b0966921fd85556602270e6f3833a6b9116e7d35b52b1538e4390d7"
+      ],
+      "note": "UI deployment confirmed on-chain; RPC code lag recovered read-only"
+    },
+    "6-sdt-offer": {
+      "status": "passed",
+      "hashes": [
+        "0x1d21da199f57e2d03878c85988e6cbae89c906db8db2318ccb2023185ec8ef1c",
+        "0x738886199525c5c7b14086d46bf98639351f27f0c96be4df180c6748e8a3443f"
+      ],
+      "offerId": "1",
+      "token": "3",
+      "note": "UI offer confirmed; block RPC lag recovered read-only"
+    },
+    "6-sdt": {
+      "status": "passed",
+      "hashes": [
+        "0x1d21da199f57e2d03878c85988e6cbae89c906db8db2318ccb2023185ec8ef1c",
+        "0x738886199525c5c7b14086d46bf98639351f27f0c96be4df180c6748e8a3443f",
+        "0xd8eb45b1f8473b7aa9f54fd7cf54e72629acf94721349ad29298e3513676b7c0"
+      ],
+      "offerId": "1",
+      "token": "3",
+      "quantity": "4000",
+      "owner": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "note": "Live UI buy confirmed; block RPC lag recovered read-only"
+    },
+    "6-no-sdt-offer": {
+      "status": "passed",
+      "hashes": [
+        "0xa2b76789eb0210152664f60f9fdb30c7a3c97aecb47469d711ceb0cf383311b5",
+        "0x8e4aa3f33975381dcab0a0ce24f49ed257ccfd6dbbf9e2eb2e725b6d263a2ce4"
+      ],
+      "offerId": "2",
+      "token": "4",
+      "quantity": "2000",
+      "note": "Live UI created offer; readback after page state race"
+    },
+    "6-no-sdt": {
+      "status": "passed",
+      "hashes": [
+        "0xa2b76789eb0210152664f60f9fdb30c7a3c97aecb47469d711ceb0cf383311b5",
+        "0x8e4aa3f33975381dcab0a0ce24f49ed257ccfd6dbbf9e2eb2e725b6d263a2ce4",
+        "0x273c4a347521521336e951971d193ae9d7f32c339e665774c18e9874e8ab74aa"
+      ],
+      "offerId": "2",
+      "token": "4",
+      "quantity": "2000",
+      "owner": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "note": "Live UI buy confirmed; block RPC lag recovered read-only"
+    },
+    "7-pledge": {
+      "status": "passed",
+      "hashes": [
+        "0xc0073c31f4f3c8655a8d68a00666d68d2fb06421c81b4fa1437c17a9da9235c4",
+        "0xf5767877afd6a1f388137414795ee80e4e60c54d8f9d9488e8488a936f34b933"
+      ],
+      "token": "2",
+      "position": "1",
+      "note": "UI transactions succeeded; delayed RPC position read reconciled"
+    },
+    "7-release-new": {
+      "status": "passed",
+      "hashes": [
+        "0x13fc05f12dd2f1210acd4cb676c84ee973b3fa77ad15dbc9d468c47dbd46a009"
+      ],
+      "token": "2",
+      "position": "1",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-release-new.png"
+    },
+    "7-offer": {
+      "status": "passed",
+      "hashes": [
+        "0x2941f219637f189bff8827d6a5c58a1ca140b152c6c776a5195916a00748dde5",
+        "0x7413518bcd7246054233929f772e37baca6c68e25def114655519c4383da74cb"
+      ],
+      "token": "2",
+      "position": "2",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-offer.png"
+    },
+    "7-fund": {
+      "status": "passed",
+      "hashes": [
+        "0xacfc9b2e8e06ed3323abb05594203a85d3ec482fe7d803658b1b2674ad1683e2"
+      ],
+      "token": "2",
+      "position": "2",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-fund.png"
+    },
+    "7-borrower-withdraw": {
+      "status": "passed",
+      "hashes": [
+        "0x026e3afd74e45973e13b95ea32c79603e8fe6525339f96a910416cfe7d675ed6"
+      ],
+      "token": "2",
+      "position": null,
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-borrower-withdraw.png"
+    },
+    "7-repay": {
+      "status": "passed",
+      "hashes": [
+        "0x3b29b3566f5ca1a3cdff76301673c2989e0f6a7530190816846e97848fbd0b12"
+      ],
+      "token": "2",
+      "position": "2",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-repay.png"
+    },
+    "7-recover": {
+      "status": "passed",
+      "hashes": [
+        "0xe4e361552245ed25679609c47c22c152733a30d253a71525090f2d66f5cbaa44"
+      ],
+      "token": "2",
+      "position": "2",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-recover.png"
+    },
+    "7-lender-withdraw": {
+      "status": "passed",
+      "hashes": [
+        "0x8788f1ca065bb0a2d647907d854509d7f4440e3257486ac93bcf2fa29c064d2f"
+      ],
+      "token": "2",
+      "position": null,
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-lender-withdraw.png"
+    },
+    "7-unfunded": {
+      "status": "passed",
+      "hashes": [
+        "0xd1a3a3e2bf5d3cbee435608be6a2be925d9664bd6854d8d6a0695da7427c817d",
+        "0x39a049a2f6b13d9d45546a5003f4eda38763f1e446a6c60f2d26fd5bb22739bb"
+      ],
+      "token": "4",
+      "position": "3",
+      "note": "UI confirmed createLoan; recovered canonical Opened event and state after transient lag returned stale position 4"
+    },
+    "7-unfunded-cancel": {
+      "status": "passed",
+      "hashes": [
+        "0x5840b01269c531adebb0820bdaab5314c6d8ec8d1fb3a671fa512d87d9bb2c14"
+      ],
+      "token": "4",
+      "position": "3",
+      "screenshot": "C:/Users/1/AppData/Local/hermes/cache/scratch/dpa-published-nine-20261019/scenario-7-unfunded-cancel.png"
+    }
+  },
+  "transactions": [
+    {
+      "hash": "0xdf7c7a01b1afa06340dedd685b99d4a8b409513b96f1a0f595b4093f855ed53b",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x0b722613e8bCCbE2873336BC970c0Eb0d459082d",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296011",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xd311988315c60f14a9fcafb540b2dbc9e9f1a2482569255b9580e1f000cb303f",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": null,
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296066",
+      "contractAddress": "0x2b3ba91f45f0d9cd8fed7eba2382357e5b449c26"
+    },
+    {
+      "hash": "0x30ca2e5d3feb0ab71e0d03b192a9e1f3bdd69a0e98b1daf8f9893e9797c51344",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x2B3Ba91f45F0D9Cd8Fed7EBA2382357e5b449C26",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296068",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xfc25ea8d7add412d3a009994fc81defc8035dd3579244ad50e4f3809d77a51eb",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x710c30a2b84ab72c022e70716a504Bea38754c65",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296198",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x88bd394b1689be0975584e9388bffef1775c543cc4e1e26b6558c14e66a179ea",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x710c30a2b84ab72c022e70716a504Bea38754c65",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296207",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xc2b374d783d11a447a62d7e3ae3cace46a145e3c02ea0588fb0b370de97cbaf6",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296282",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x8dcad320462e518c25bc213bf7b74c84b93d6fa35ab9de62cd501e86d744c1c4",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296294",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x00d33e8104e89cdb8f3700c2ae097aba94893d0a7951d29290974ee006bf4537",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296342",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x086e6133b3141b1f25ff6ed72306e9ffe3814e9f5326ae1400555ad0c50499a1",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296364",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xba90e33c7fcd06284de049a456847dc29b6e305e6d2b3d7e77e5d3c50a81fde4",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0xeBF20fF61DCA7d8867CAff4d5C9b855D570827eb",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296523",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x9b8ecc747e6d75a61e6db6fabe7a2d90aaf28486aa6e07387cb6fa503b870eb4",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": null,
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296874",
+      "contractAddress": "0x7214efe5a46794bcddeb9fed305ed309509cb091"
+    },
+    {
+      "hash": "0x9a6c9f818b0966921fd85556602270e6f3833a6b9116e7d35b52b1538e4390d7",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": null,
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296903",
+      "contractAddress": "0x2d121a3e5bdd60b3cf38b6025961ceb4f3d0666b"
+    },
+    {
+      "hash": "0x1d21da199f57e2d03878c85988e6cbae89c906db8db2318ccb2023185ec8ef1c",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296946",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x738886199525c5c7b14086d46bf98639351f27f0c96be4df180c6748e8a3443f",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48296959",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xd8eb45b1f8473b7aa9f54fd7cf54e72629acf94721349ad29298e3513676b7c0",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297059",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xa2b76789eb0210152664f60f9fdb30c7a3c97aecb47469d711ceb0cf383311b5",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297089",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x8e4aa3f33975381dcab0a0ce24f49ed257ccfd6dbbf9e2eb2e725b6d263a2ce4",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297101",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x273c4a347521521336e951971d193ae9d7f32c339e665774c18e9874e8ab74aa",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297145",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xc0073c31f4f3c8655a8d68a00666d68d2fb06421c81b4fa1437c17a9da9235c4",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297188",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xf5767877afd6a1f388137414795ee80e4e60c54d8f9d9488e8488a936f34b933",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297197",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x13fc05f12dd2f1210acd4cb676c84ee973b3fa77ad15dbc9d468c47dbd46a009",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297231",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x2941f219637f189bff8827d6a5c58a1ca140b152c6c776a5195916a00748dde5",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297255",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x7413518bcd7246054233929f772e37baca6c68e25def114655519c4383da74cb",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297262",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xacfc9b2e8e06ed3323abb05594203a85d3ec482fe7d803658b1b2674ad1683e2",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297290",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x026e3afd74e45973e13b95ea32c79603e8fe6525339f96a910416cfe7d675ed6",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297311",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x3b29b3566f5ca1a3cdff76301673c2989e0f6a7530190816846e97848fbd0b12",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297716",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xe4e361552245ed25679609c47c22c152733a30d253a71525090f2d66f5cbaa44",
+      "from": "0x18FA86747a9eDfbB0B79883aff42A038065A44e5",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297740",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x8788f1ca065bb0a2d647907d854509d7f4440e3257486ac93bcf2fa29c064d2f",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297771",
+      "contractAddress": null
+    },
+    {
+      "hash": "0xd1a3a3e2bf5d3cbee435608be6a2be925d9664bd6854d8d6a0695da7427c817d",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297798",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x39a049a2f6b13d9d45546a5003f4eda38763f1e446a6c60f2d26fd5bb22739bb",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297807",
+      "contractAddress": null
+    },
+    {
+      "hash": "0x5840b01269c531adebb0820bdaab5314c6d8ec8d1fb3a671fa512d87d9bb2c14",
+      "from": "0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12",
+      "to": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+      "method": "eth_sendTransaction",
+      "status": "success",
+      "block": "48297837",
+      "contractAddress": null
+    }
+  ],
+  "errors": [
+    "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#fullName')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"fullName\" name=\"fullName\" autocomplete=\"off\" spellcheck=\"false\" value=\"Synthetic Alice\"/>\u001b[22m\n\u001b[2m    - fill(\"Synthetic Alice\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12/i. Input:\n\n'Disconnected'\n",
+    "BlockNotFoundError: Block at number \"48296011\" could not be found.\n\nVersion: viem@2.57.6",
+    "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#sdt')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"sdt\" name=\"sdt\" autocomplete=\"off\" spellcheck=\"false\" placeholder=\"e.g. 0x1234…\"/>\u001b[22m\n\u001b[2m    - fill(\"0x0b722613e8bCCbE2873336BC970c0Eb0d459082d\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    59 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+    "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#status').getByText(/sole NFT issuer/) to be visible\u001b[22m\n",
+    "TimeoutError: locator.waitFor: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#overview').getByText(/complete true/) to be visible\u001b[22m\n",
+    "Error: Package inspect: Error: Operator collection mismatch overview  / locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#overview').getByText(/complete true/) to be visible\u001b[22m\n",
+    "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /60%.*Active/. Input:\n\n''\n",
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /60%.*Active/. Input:\\n' +\n+     '\\n' +\n+     \"''\\n\"\n+ ]\n- []\n",
+    "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\n\n''\n",
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\n' +\n+     '\\n' +\n+     \"''\\n\"\n+ ]\n- []\n",
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\n' +\n+     '\\n' +\n+     \"''\\n\",\n+   'AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\\n' +\n+     '+ actual - expected\\n' +\n+     '\\n' +\n+     '+ [\\n' +\n+     \"+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\\\n' +\\n\" +\n+     \"+     '\\\\n' +\\n\" +\n+     `+     \"''\\\\n\"\\n` +\n+     '+ ]\\n' +\n+     '- []\\n'\n+ ]\n- []\n",
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\n' +\n+     '\\n' +\n+     \"''\\n\",\n+   'AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\\n' +\n+     '+ actual - expected\\n' +\n+     '\\n' +\n+     '+ [\\n' +\n+     \"+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\\\n' +\\n\" +\n+     \"+     '\\\\n' +\\n\" +\n+     `+     \"''\\\\n\"\\n` +\n+     '+ ]\\n' +\n+     '- []\\n',\n+   'AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\\n' +\n+     '+ actual - expected\\n' +\n+     '\\n' +\n+     '+ [\\n' +\n+     \"+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\\\n' +\\n\" +\n+     \"+     '\\\\n' +\\n\" +\n+     `+     \"''\\\\n\",\\n` +\n+     \"+   'AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\\\\n' +\\n\" +\n+     \"+     '+ actual - expected\\\\n' +\\n\" +\n+     \"+     '\\\\n' +\\n\" +\n+     \"+     '+ [\\\\n' +\\n\" +\n+     `+     \"+   'AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Owner|Burned/. Input:\\\\\\\\n' +\\\\n\" +\\n` +\n+     `+     \"+     '\\\\\\\\n' +\\\\n\" +\\n` +\n+     '+     `+     \"\\'\\'\\\\\\\\n\"\\\\n` +\\n' +\n+     \"+     '+ ]\\\\n' +\\n\" +\n+     \"+     '- []\\\\n'\\n\" +\n+     '+ ]\\n' +\n+     '- []\\n'\n+ ]\n- []\n",
+    "AssertionError [ERR_ASSERTION]: Receipt block not yet available; reconcile before retry",
+    "Error: Error: Operator absent · transaction outcome uncertain; inspect receipt before retry",
+    "Error: Error: Operator absent · transaction outcome uncertain; inspect receipt before retry",
+    "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Active/. Input:\n\n''\n",
+    "AssertionError [ERR_ASSERTION]: Receipt block not yet available; reconcile before retry",
+    "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#offer-details').getByText(/Download verified offer evidence/) to be visible\u001b[22m\n",
+    "Error: Offer view: Canonical formation, SDT, package and optional escrows verified. Read-only inspection requires no wallet. details  / locator.waitFor: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#offer-details').getByText(/Download verified offer evidence/) to be visible\u001b[22m\n",
+    "AssertionError [ERR_ASSERTION]: Receipt block not yet available; reconcile before retry",
+    "TimeoutError: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#offer-details').getByText(/Download verified offer evidence/) to be visible\u001b[22m\n",
+    "AssertionError [ERR_ASSERTION]: Receipt block not yet available; reconcile before retry",
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0n !== 2n\n",
+    "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0n !== 4n\n"
+  ],
+  "newSdtId": "6",
+  "newSdtDigest": "0x07d5740876b148d66ba3b757bee50b6386a9e99026760c00a2e4d536e3b9141d",
+  "factory": "0x2B3Ba91f45F0D9Cd8Fed7EBA2382357e5b449C26",
+  "formation": "0x710c30a2b84ab72c022e70716a504Bea38754c65",
+  "collection": "0xa75835d28c599Ef6245aCeEBFED0DB1F3D9467B1",
+  "children": [
+    "3",
+    "4"
+  ],
+  "sale": "0x7214efe5A46794BCDDeB9fed305ED309509cB091",
+  "loan": "0x2d121a3e5Bdd60b3cF38B6025961Ceb4f3D0666B",
+  "pledgePosition": "1",
+  "offerPosition": "2",
+  "unfundedPosition": "3"
+}

@@ -1,0 +1,23 @@
+# SDT + DPA experimental prototype
+
+A research-only self-declaration token and EIP-712 partnership-acceptance recorder. **Synthetic inputs only. This is not identity verification, banking verification, anonymity, or legally reliable authentication. Do not enter real details.** No research text is licensed by this repository.
+
+## Public deployment
+
+The main public site is deployed to GitHub Pages from a separate public repository: **https://maximosovsky.github.io/Decentralized-Partnership-Agreements-DPA-Self-Declared-Tokens-SDT/**. A test deployment runs on Vercel at **https://cryptopassport-testnet.vercel.app/** (source: this private repository). The GitHub Pages repository contains only compiled output; this repository holds the source.
+
+## Reproduce locally
+
+Requires Node.js >=22.13 and npm. In this folder run `npm ci`, `npm test`, `npm run build`, `npm run dev -- --port 4173 --strictPort`, then `node scripts/browser-smoke.mjs` (install Chromium once with `npx playwright install chromium`). UI: `http://127.0.0.1:4173/`. `npm run test:hash` checks an independent Python hashlib vector embedded in a test. Scenario uses ephemeral Hardhat chain ID 31337 and transient *publicly known development accounts only*; they must never be used on a public network. JSON/CSV/ABIs are exported in `artifacts/research/<timestamp>/` without committing obsolete local-pilot snapshots. Hardhat may clean generated artifacts on subsequent compilation, so preserve evidence under docs before rebuilding. Do not mistake ephemeral addresses or tx hashes for Base Sepolia records. Browser smoke may generate `artifacts/browser-smoke.png` locally; it is not published as historical evidence.
+
+## Public static frontend deployment
+
+Vercel project root: this folder (`test-deployment`); framework Vite; build command `npm run build`; output directory `dist`; install command `npm ci`. The build script (`install-pilot-artifacts.mjs`) copies canonical pilot artifacts from `canonical-artifacts/` into `artifacts/contracts/`, verifying SHA-256 hashes against the pilot manifest — no separate compile step is needed. No environment variables, wallet key, seed, RPC credential, or backend are needed for the static frontend. The public page has wallet-initiated *optional* deployment controls and no prefilled legacy DPA or ERC-1155 pilot example; publishing the UI alone does not deploy another contract. Enforce Base Sepolia chain ID 84532 for any public wallet signing; local chain 31337 is for local testing only. Frontend imports ABI and deployment bytecode, not any private key. Publishing the UI is not an endorsement to input personal data. Review generated build for embedded secrets before publication. License/rights for original research not granted; SPDX `UNLICENSED` marks contract files.
+
+## Public testnet gate
+
+Official Base docs: RPC `https://sepolia.base.org`, chain 84532, explorer `https://sepolia.basescan.org`, faucet listings `https://docs.base.org/base-chain/network-information/network-faucets`. The current synthetic NFT package pilot evidence is in `docs/evidence/base-sepolia/exclusive-nft-package/`; an earlier NFT package pilot archive is in `docs/evidence/base-sepolia/nft-package-pilot/`. Earlier SDT/DPA and ERC-1155 pilot archives were removed from the current tree by request. This does not erase Git history or blockchain records. No production, mainnet, or L1 finality claim. Any *new* deployment requires separate approval, funding, and chain/code/receipt readback. The public accept transaction calldata includes a 65-byte signature; the domain binds it to chain ID and DPA address. No private key belongs in source, git, UI, chat or exported reports. Signed raw transactions are spending authorizations and belong only in a restricted operational journal outside the repository.
+
+## Scope
+
+See `docs/specification.md`, `docs/threat-model.md`, `docs/test-matrix.md`, and `docs/evidence/base-sepolia/exclusive-nft-package/manifest.json`. SDT hash is SHA-256 over domain-separated, ordered UTF-8 field names and exact values for thirteen fields (fullName, dateOfBirth, passportNumber, bankTransactionId, bankName, bankBic, bankAccountNumber, bankDate, bankTime, bankTimezone, bankAmount, bankCurrency, bankRecipient), each prefixed by uint32 big-endian byte lengths. Domain: `cryptopassport:SDT:identity:v2\0`. No trimming, case conversion, Unicode normalization or silent date, amount or time correction. DPA supports only SDT mode and EOA EIP-712 signatures. Agreement text is kept in source/UI; contract stores hash and snapshots. No gas-price or fiat-price claim is derived from local gas units.

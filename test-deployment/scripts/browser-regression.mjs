@@ -1,0 +1,43 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import sdt from '../artifacts/contracts/SDT.sol/SDT.json' with {type:'json'};
+const url='http://127.0.0.1:4174/';
+const address='0x1234567890123456789012345678901234567890';
+const sdtAddress='0x2345678901234567890123456789012345678901';
+const dpaAddress='0x3456789012345678901234567890123456789012';
+const browser=await chromium.launch({headless:true});
+try {
+ const page=await browser.newPage({acceptDownloads:true});
+ const errors=[],requests=[];page.on('pageerror',e=>errors.push(String(e)));page.on('request',r=>requests.push(r.url()));
+ await page.addInitScript(({address,sdtAddress,dpaAddress,code})=>{
+  const listeners={};window.__mock={account:address,chain:'0x7a69',sdtAddress,dpaAddress,sdtCode:code,calls:[],emit(event,value){for(const cb of listeners[event]||[])cb(value)}};
+  window.ethereum={on(event,cb){(listeners[event]??=[]).push(cb)},removeListener(event,cb){listeners[event]=(listeners[event]||[]).filter(x=>x!==cb)},async request({method,params}){let m=window.__mock;m.calls.push(method);if(method==='eth_chainId')return m.chain;if(method==='eth_requestAccounts'||method==='eth_accounts')return m.account?[m.account]:[];if(method==='eth_getCode')return params[0].toLowerCase()===m.sdtAddress.toLowerCase()?m.sdtCode:'0x';throw Error('Simulated wallet refuses '+method)}};
+ },{address,sdtAddress,dpaAddress,code:sdt.deployedBytecode});
+ await page.goto(url);const enabled=async id=>await page.locator('#'+id).isEnabled();
+ for(const id of ['deploy-sdt','deploy-dpa','mint','accept','inspect','burn'])assert.equal(await enabled(id),false,`${id} initially gated`);
+ await page.locator('#hash').click();assert.match(await page.locator('#digest').innerText(),/0x66d71627/);
+ const download=page.waitForEvent('download');await page.locator('#export').click();const data=JSON.parse(await (await download).createReadStream().then(async stream=>{let out='';for await(const chunk of stream)out+=chunk;return out}));assert.equal(data.syntheticOnly,true);
+ await page.locator('#fullName').fill('Synthetic Actual Person');await page.locator('#hash').click();assert.match(await page.locator('#digest').innerText(),/Rejected/);await page.locator('#export').click();assert.match(await page.locator('#output').innerText(),/Export rejected/);
+ await page.locator('#fullName').fill('Synthetic Alice');await page.locator('#hash').click();
+ await page.locator('#sdt').fill('PERSONAL-PASSPORT-123');await page.locator('#export').click();assert.match(await page.locator('#output').innerText(),/Export rejected/,'metadata must not leak arbitrary input');await page.locator('#sdt').fill('');
+ await page.locator('#connect').click();await page.waitForTimeout(200);
+ assert.match(await page.locator('#network').innerText(),/Connected/);assert.equal(await enabled('deploy-sdt'),true);assert.equal(await enabled('deploy-dpa'),false);
+ await page.locator('#sdt').fill(sdtAddress);await page.waitForTimeout(150);
+ assert.equal(await enabled('deploy-dpa'),true,'canonical SDT enables DPA deploy');assert.equal(await enabled('mint'),true);
+ await page.locator('#dpa').fill(dpaAddress);await page.waitForTimeout(150);assert.equal(await enabled('accept'),false,'missing DPA code blocks signing');assert.equal(await enabled('inspect'),false,'missing DPA code blocks inspection');
+ await page.evaluate(code=>window.__mock.sdtCode=code.slice(0,-2)+'00',sdt.deployedBytecode);await page.locator('#sdt').fill(dpaAddress);await page.locator('#sdt').fill(sdtAddress);await page.waitForTimeout(150);assert.equal(await enabled('mint'),false,'lookalike SDT runtime rejected');
+ await page.evaluate(()=>window.__mock.sdtCode='0x');await page.locator('#sdt').fill(dpaAddress);await page.locator('#sdt').fill(sdtAddress);await page.waitForTimeout(150);
+ assert.equal(await enabled('deploy-dpa'),false,'missing SDT code blocks deploy');assert.equal(await enabled('mint'),false,'missing SDT code blocks mint');
+ await page.evaluate(code=>window.__mock.sdtCode=code,sdt.deployedBytecode);await page.locator('#sdt').fill(dpaAddress);await page.locator('#sdt').fill(sdtAddress);await page.waitForTimeout(150);
+ assert.equal(await enabled('mint'),true);
+ await page.evaluate(()=>{window.__mock.account='0x4567890123456789012345678901234567890123'});
+ await page.locator('#mint').click();assert.match(await page.locator('#output').innerText(),/account changed/i);assert.equal(await enabled('mint'),false);assert.equal(await page.evaluate(()=>window.__mock.calls.includes('eth_sendTransaction')),false);
+ await page.evaluate(({address})=>window.__mock.account=address,{address});await page.locator('#connect').click();await page.waitForTimeout(150);
+ await page.evaluate(()=>{window.__mock.chain='0x1'});await page.locator('#deploy-sdt').click();assert.match(await page.locator('#output').innerText(),/network/i);assert.equal(await enabled('deploy-sdt'),false,'chain switch without event caught before signing');await page.evaluate(()=>window.__mock.chain='0x7a69');
+ await page.locator('#connect').click();await page.waitForTimeout(150);
+ await page.evaluate(()=>{window.__mock.emit('accountsChanged',['0x4567890123456789012345678901234567890123'])});await page.waitForTimeout(100);
+ assert.equal(await enabled('deploy-sdt'),false,'accountsChanged invalidates wallet');
+ await page.locator('#connect').click();await page.waitForTimeout(150);await page.evaluate(()=>window.__mock.emit('chainChanged','0x14a34'));await page.waitForTimeout(100);assert.equal(await enabled('deploy-sdt'),false,'chainChanged invalidates wallet');
+ assert.deepEqual(errors,[]);assert.equal(requests.some(u=>!u.startsWith(url)),false,'no data leaks over network');
+ console.log(JSON.stringify({initialGates:true,fixtureReject:true,exportReject:true,canonicalSdtGate:true,missingSdtGate:true,missingDpaGate:true,lookalikeSdtRejected:true,preSignAccountRecheck:true,preSignChainRecheck:true,accountsChanged:true,chainChanged:true,errors,externalRequests:0,walletSigningCalls:await page.evaluate(()=>window.__mock.calls.filter(m=>/sign|sendTransaction/i.test(m)))},null,2));
+} finally {await browser.close()}

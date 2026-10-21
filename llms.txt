@@ -1,0 +1,18 @@
+# DPA-SDT
+> Research prototype for self-declarations, partnership acceptance, and participation packages.
+
+## About
+Fresh independent snapshot; no old Git history, fork relationship, or new blockchain execution. All code remains under test-deployment/. Synthetic inputs only; Base Sepolia evidence is historical.
+
+- Author: Maxim Osovsky
+- URL: https://github.com/maximosovsky/DPA-SDT
+- Visibility: private
+- License: no new license; existing source notices retained
+- Checks: hash helper 4 passed; focused contracts 31 passed; build passed; full suite 159 passed / 67 failed
+- Evidence: nine scenarios, 31 distinct receipt hashes; controlled EIP-1193 provider, not manual MetaMask
+
+## Docs
+- [Full reference](llms-full.txt)
+- [README](README.md)
+- [Provenance](PROVENANCE.md)
+- [Verification](VERIFICATION.md)

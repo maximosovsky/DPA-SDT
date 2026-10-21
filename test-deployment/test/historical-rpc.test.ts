@@ -1,0 +1,7 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {verifyHistorical} from '../src/historical-verify.ts';
+const fields={fullName:'Synthetic Alice',dateOfBirth:'02.03.1990',passportNumber:'TEST-0001',bankTransactionId:'SYNTH-BANK-1',bankName:'Fictional Test Bank',bankBic:'TESTUS00XXX',bankAccountNumber:'TEST-ACCOUNT-0001',bankDate:'2026-01-15',bankTime:'12:30',bankTimezone:'UTC+00:00',bankAmount:'100.00',bankCurrency:'USD',bankRecipient:'Synthetic Recipient'};
+const base={network:'84532',hostname:'example.org',contract:'0xB23Ed35bf06D90FF197d00f0792f918808794ecd',wallet:'0xBd2aa57e6D4a85939a0f635888EaEc9B0F4d0C12',fields};
+test('foreign wallet never masquerades as an acceptance',async()=>{const r=await verifyHistorical({...base,wallet:'0x0000000000000000000000000000000000000001'});assert.equal(r.status,'absent');assert.equal(r.acceptanceFound,false);});
+test('forged contract is not treated as canonical',async()=>{const r=await verifyHistorical({...base,contract:'0x0000000000000000000000000000000000000001'});assert.equal(r.status,'unknown_contract');});
+test('RPC failure remains unknown rather than absence or hash mismatch',async()=>{const r=await verifyHistorical(base,{getChainId:async()=>{throw Error('RPC unavailable');}});assert.equal(r.status,'rpc_unavailable');assert.equal(r.acceptanceFound,null);});
