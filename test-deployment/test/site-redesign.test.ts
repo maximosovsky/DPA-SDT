@@ -10,8 +10,8 @@ for(const page of pages){
    assert.ok(footer,`footer missing: ${page}`);assert.ok(!footer.includes(sentence),'mission repeated in footer');
    if(page==='index')assert.ok(html.split('</main>')[0].includes(sentence),'homepage mission missing');
    else assert.ok(!html.includes(sentence),'mission repeated off homepage');
-   for(const path of ['/privacy.html','/terms.html','/contact.html']) assert.ok(footer.includes(`href="${path}"`),`${path} absent`);
-   assert.ok(html.includes('href="/client/site.css"'),'shared design absent');
+   for(const path of ['./privacy.html','./terms.html','./contact.html']) assert.ok(footer.includes(`href="${path}"`),`${path} absent`);
+   assert.ok(html.includes('href="./client/site.css"'),'shared design absent');
   });
  if(ids[page])test(`${page} retains original controls and bindings`,()=>{
   const html=readFileSync(`${page}.html`,'utf8');
@@ -24,10 +24,10 @@ test('workspace actions precede collapsed research and SDT tools remain addressa
  assert.ok(previous>=0,'workspace actions missing');
  for(const phrase of ['Create agreement','Open invitation'])assert.ok(html.includes(phrase),`missing ${phrase}`);
  for(const id of ['what','why','how']){const at=html.indexOf(`id="${id}"`);assert.ok(at>previous,`missing or unordered ${id}`);previous=at;}
- assert.ok(previous<html.indexOf('<details class="legacy" id="sdt-tools">'));
- assert.match(html,/<details class="legacy" id="sdt-tools"><summary>Research &amp; testing · SDT declaration tools<\/summary>/);
+ assert.ok(previous<html.indexOf('<details id="sdt-tools">'));
+ assert.match(html,/<details id="sdt-tools"><summary>Research &amp; testing · SDT declaration tools<\/summary>/);
  assert.match(readFileSync('shares.html','utf8'),/href="\/#sdt-tools"/);
  assert.match(readFileSync('client/main.ts','utf8'),/location\.hash==='#sdt-tools'[\s\S]*?\.open=true/);
- assert.ok(html.includes('href="/dpa.html"'),'formation CTA absent');
+ assert.ok(html.includes('href="./dpa.html"'),'formation CTA absent');
  for(const phrase of ['banking','Self-Declared','rights']) assert.ok(html.includes(phrase),`missing ${phrase}`);
 });

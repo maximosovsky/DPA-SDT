@@ -29,19 +29,20 @@ Requires Node.js >=22.13 and npm. Use only fictional inputs.
 ```bash
 git clone https://github.com/maximosovsky/DPA-SDT.git
 cd DPA-SDT/test-deployment
-npm ci --ignore-scripts
-npm run compile
-node --experimental-strip-types --test test/identity-hash-v2.test.ts
+npm ci
+npx playwright install chromium
+npm test
+npm run test:hash
 npm run build
 npm run dev -- --port 4173 --strictPort
 ```
 
-Open `http://127.0.0.1:4173/`. Compilation is required in a fresh checkout: the pinned-artifact installer supplies six deployed artifacts, but the interface also imports other compiled contracts. No wallet, private key, or RPC credential is required to build the static frontend. Do not run public-network transaction/deployment scripts without separate authorization.
+Open `http://127.0.0.1:4173/`. Build and test commands compile automatically before installing six pinned deployed artifacts and bundling all imported contracts. No wallet, private key, or RPC credential is required to build the static frontend. Do not run public-network transaction/deployment scripts without separate authorization.
 
 <details>
-<summary>Local checks and current failures</summary>
+<summary>Local verification</summary>
 
-`npm test` runs the full inherited suite. Snapshot verification returned **159 passing / 67 failing**; failures include inherited UI/navigation assertions, browser checks, and a test that expects a removed archive. The ten focused contract/provenance test files returned **31 passing / 0 failing**. The v2 identity-hash helper returned **4 passing / 0 failing**, and compilation plus the subsequent production build passed. The inherited `npm run test:hash` points to a missing older test filename; use the explicit v2 command above.
+`npm test` runs the full suite, including Chromium checks: **234 passing / 0 failing**. `npm run test:hash` executes the supported thirteen-field v2 suite: **4 passing / 0 failing**. Fresh install, automatic compilation and production build are verified; no tests are disabled.
 
 These are local publication checks, not a rerun of the historical Base Sepolia scenarios. See [VERIFICATION.md](VERIFICATION.md).
 
@@ -57,7 +58,7 @@ All project source remains under `test-deployment/`:
 - `canonical-artifacts/`: six exact deployed artifacts checked by SHA-256 before bundling.
 - `docs/`: specifications, threat model, test matrix, and retained evidence.
 
-[Original source README](test-deployment/README.md) and supporting documents are preserved as source-era material, not updated deployment instructions for this new repository.
+[Source README](test-deployment/README.md) includes current local reproduction commands; historical hosting references and supporting documents remain source-era material, not deployment instructions for this new repository.
 
 ## Evidence and limitations
 
@@ -65,7 +66,7 @@ Historical Base Sepolia evidence is preserved byte-for-byte in [published-nine](
 
 The recorded provider was a controlled Playwright EIP-1193 test-wallet adapter, not manual MetaMask. Raw evidence retains failed/probe entries and local provenance paths; the final manifest describes subsequent reconciliation. Publication does not newly verify RPC receipts, deploy contracts, establish mainnet/L1 finality, guarantee evidence availability, authenticate a person or bank, or establish enforceable rights. Public unsalted hashes are guessable, not encryption.
 
-Superseded two-party/ERC-1155 and non-exclusive NFT pilot receipt archives are omitted. Their supporting code/tests remain where needed by the current source; a test referencing the omitted archive is disclosed rather than rewritten.
+Superseded two-party/ERC-1155 and non-exclusive NFT pilot receipt archives are omitted. Their supporting code remains where needed; evidence tests now validate the retained exclusive-package and published-nine manifests, including the explicit 31 raw / 30 lifecycle receipt distinction.
 
 ## Attribution and rights
 

@@ -13,7 +13,7 @@ for(const route of routes){
   assert.ok(end);assert.doesNotMatch(end,/class="mission"/);
   if(route==='index')assert.ok(main(html).includes(mission),'single homepage mission');
   else assert.ok(!html.includes(mission),'mission belongs on homepage only');
-  for(const path of ['/privacy.html','/terms.html','/contact.html']) assert.ok(end.includes(`href="${path}"`));
+  for(const path of ['./privacy.html','./terms.html','./contact.html']) assert.ok(end.includes(`href="${path}"`));
   for(const url of ['https://github.com/maximosovsky','https://www.linkedin.com/in/osovsky/','https://orcid.org/0009-0004-1594-0940']) assert.ok(end.includes(`href="${url}"`));
   assert.match(end,/Synthetic-only research prototype/);
   assert.match(html,/<a class="skip-link" href="#main">/);
@@ -26,10 +26,10 @@ for(const route of routes){
 }
 test('homepage action links remain distinct and SDT tools stay addressable',()=>{
  const text=main(read('index'));
- assert.match(text,/href="\/dpa.html#compose-workflow"/);
- assert.match(text,/href="\/dpa.html#invitation-workflow"/);
+ assert.match(text,/href="\.\/dpa.html#compose-workflow"/);
+ assert.match(text,/href="\.\/dpa.html#invitation-workflow"/);
  assert.doesNotMatch(text,/example=1/);
- assert.match(text,/<details class="legacy" id="sdt-tools">/);
+ assert.match(text,/<details id="sdt-tools">/);
  assert.match(text,/Fictional data and test ETH only/);
  assert.doesNotMatch(text,/class="eyebrow"/);
 });
@@ -52,8 +52,8 @@ test('share and sale warnings remain action-specific',()=>{
  assert.match(sale,/Approval grants this sale escrow access to all units/);
  assert.match(sale,/public/i);assert.match(sale,/test ETH/i);
  assert.match(shares,/href="\/#sdt-tools"/);
- assert.match(shares,/href="\/dpa.html#invitation-workflow"/);
- assert.match(sale,/href="\/dpa.html#invitation-workflow"/);
+ assert.match(shares,/href="\.\/dpa.html#invitation-workflow"/);
+ assert.match(sale,/href="\.\/dpa.html#invitation-workflow"/);
 });
 test('legal pages retain substantive notices and contact paths',()=>{
  assert.match(main(read('privacy')),/cannot be erased/);

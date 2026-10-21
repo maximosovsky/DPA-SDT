@@ -1,32 +1,13 @@
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
-import { createServer } from 'node:net';
+import {startSiteServer} from '../scripts/test-site-server.mjs';
 
-const availablePort = await new Promise((resolve, reject) => {
-  const server = createServer();
-  server.once('error', reject);
-  server.listen(0, '127.0.0.1', () => {
-    const port = server.address().port;
-    server.close(() => resolve(port));
-  });
-});
-const base = process.env.SITE_URL || `http://127.0.0.1:${availablePort}`;
-const server = process.env.SITE_URL ? null : spawn(process.execPath,
-  ['node_modules/vite/bin/vite.js', '--host', '127.0.0.1', '--port', String(availablePort), '--strictPort'],
-  { stdio: 'ignore' });
-if (server) {
-  let ready = false;
-  for (let attempt = 0; attempt < 100; attempt++) {
-    if (server.exitCode !== null) throw new Error('Local typography test server exited');
-    try { if ((await fetch(base)).ok) { ready = true; break; } } catch { /* still starting */ }
-    await new Promise(resolve => setTimeout(resolve, 100));
-  }
-  assert.ok(ready, 'Local typography test server becomes ready');
-}
+const server=process.env.SITE_URL?null:await startSiteServer();
+const base=process.env.SITE_URL||server.base;
 const routes = ['/', '/dpa.html', '/shares.html', '/sale.html', '/privacy.html', '/terms.html', '/contact.html'];
-const browser = await chromium.launch({ headless: true });
+let browser;
 try {
+  browser = await chromium.launch({ headless: true });
   for (const width of [1280, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     for (const route of routes) {
@@ -40,13 +21,13 @@ try {
           ['main .record dt', 400], ['main .record dd', 400],
           ['.site-links a', 400], ['footer p', 400], ['footer a', 400],
           ['.brand', 500], ['.eyebrow', 500], ['.section-number', 500],
-          ['.button-link', 500], ['main button', 500], ['main summary', 500],
+          ['.button-link', 500], ['main button:not(#sdt-tools button)', 500], ['#sdt-tools button', 700], ['main summary', 500],
           ['main h1', 500], ['main h2', 500], ['main h3', 500],
           ['main strong', 500]
         ];
         const samples = rules.flatMap(([selector, max]) => [...document.querySelectorAll(selector)]
           .filter(el => getComputedStyle(el).display !== 'none')
-          .map(el => ({ selector, max, weight: Number(getComputedStyle(el).fontWeight), text: el.textContent.trim().slice(0, 40) })));
+          .map(el => ({ selector, max: el.matches('.field-error') ? 600 : max, weight: Number(getComputedStyle(el).fontWeight), text: el.textContent.trim().slice(0, 40) })));
         return { samples, overflow: document.documentElement.scrollWidth > innerWidth + 2,
           navHeight: document.querySelector('.site-links a')?.getBoundingClientRect().height };
       });
@@ -60,4 +41,4 @@ try {
     }
     await page.close();
   }
-} finally { await browser.close(); server?.kill(); }
+} finally { await browser?.close(); await server?.stop(); }

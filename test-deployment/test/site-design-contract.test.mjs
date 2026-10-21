@@ -10,7 +10,7 @@ for(const page of pages){
   assert.match(html,/<nav class="site-links" aria-label="Site navigation">/);
   assert.equal((html.match(/aria-current="page"/g)||[]).length,['dpa','shares','sale'].includes(page)?1:0);
   assert.doesNotMatch(main,/<nav[ >]/,'duplicate back/breadcrumb navigation');
-  for(const dest of ['/privacy.html','/terms.html','/contact.html']) assert.ok(html.split('<footer>')[1].includes(`href="${dest}"`));
+  for(const dest of ['./privacy.html','./terms.html','./contact.html']) assert.ok(html.split('<footer>')[1].includes(`href="${dest}"`));
  });
 }
 test('overview omits obsolete ERC1155 pilot and retains research',()=>{

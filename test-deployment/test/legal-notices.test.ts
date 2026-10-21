@@ -7,7 +7,7 @@ for(const page of pages){
  test(`${page} links both legal notices and contact in its footer`,()=>{
   const footer=readFileSync(page,'utf8').match(/<footer>\s*([\s\S]*?)<\/footer>/)?.[1];
   assert.ok(footer,'footer exists');
-  for(const [path,label] of [['/privacy.html','Privacy Notice'],['/terms.html','Terms of Use'],['/contact.html','Contact']]){
+  for(const [path,label] of [['./privacy.html','Privacy Notice'],['./terms.html','Terms of Use'],['./contact.html','Contact']]){
    assert.ok(footer.includes(`href="${path}"`),`${path} missing from footer`);
    assert.ok(footer.includes(label),`${label} missing from footer`);
   }

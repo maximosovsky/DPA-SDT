@@ -6,7 +6,7 @@ test('workspace starts with three task destinations before the research record',
  const home=page('index');
  for(const text of ['Create agreement','Open invitation']) assert.match(home,new RegExp(text));
  assert.ok(home.indexOf('id="workspace-actions"') < home.indexOf('id="what"'));
- assert.match(home, /href="\/dpa\.html#invitation-workflow"/);
+ assert.match(home, /href="\.\/dpa\.html#invitation-workflow"/);
  assert.doesNotMatch(home, /example=1/);
  assert.match(home, /<details[^>]*class="[^"]*research/);
 });

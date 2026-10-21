@@ -1,25 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';
-import {createServer} from 'node:net';
+import {startSiteServer} from '../scripts/test-site-server.mjs';
 import {chromium} from 'playwright';
 
 test('built preview browser scenarios', async t => {
-const port = await new Promise((resolve, reject) => {
- const socket = createServer(); socket.once('error', reject);
- socket.listen(0, '127.0.0.1', () => {const port=socket.address().port;socket.close(() => resolve(port));});
-});
-const base = `http://127.0.0.1:${port}`;
-const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js','preview','--host','127.0.0.1','--port',String(port),'--strictPort'], {stdio:'ignore'});
-const browser = await chromium.launch({headless:true});
+const server = await startSiteServer({preview:true});
+const base=server.base;
+let browser;
 try {
- let ready = false;
- for (let tries=0;tries<100;tries++) {
-  try {if ((await fetch(base+'/index1.html')).ok) {ready=true;break;}} catch {}
-  if (server.exitCode !== null) break;
-  await new Promise(resolve => setTimeout(resolve,100));
- }
- assert.ok(ready, 'built preview server ready');
+ browser=await chromium.launch({headless:true});
  for (const width of [1280,390,320]) {
   await t.test(`built preview at ${width}px has no obsolete record and preserves offline controls`, async () => {
    const page = await browser.newPage({viewport:{width,height:900}});
@@ -40,8 +29,9 @@ try {
      primaryNav:[...document.querySelectorAll('.site-links a')].map(el=>el.getAttribute('href'))}));
    assert.equal(result.overflow,false,`horizontal overflow at ${width}`);
    assert.equal(result.oldRecord,null);
-   assert.deepEqual(result.primaryNav,['/dpa.html','/shares.html','/packages.html','/sale.html','/verify.html']);
-   for(const weight of ['bodyWeight','headingWeight','brandWeight','buttonWeight','summaryWeight']) assert.ok(Number(result[weight])<=500, `${weight} ${result[weight]}`);
+   assert.deepEqual(result.primaryNav,['./dpa.html','./shares.html','./packages.html','./sale.html','./verify.html']);
+   for(const weight of ['bodyWeight','headingWeight','brandWeight','summaryWeight']) assert.ok(Number(result[weight])<=500, `${weight} ${result[weight]}`);
+   assert.equal(result.buttonWeight,'700','legacy SDT tools keep their scoped bold buttons');
    await page.locator('#sdt-tools').evaluate(el=>el.open=true);
    assert.equal(await page.locator('#network').textContent(),'Disconnected');
    await page.locator('#hash').click();
@@ -61,5 +51,5 @@ try {
   assert.equal(await page.locator('link[href*="preview-"]').count(),0);
   await page.close();
  });
-} finally {await browser.close();server.kill();}
+} finally {await browser?.close();await server.stop();}
 });

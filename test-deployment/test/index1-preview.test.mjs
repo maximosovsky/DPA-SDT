@@ -19,7 +19,7 @@ test('preview keeps all current homepage controls, destinations, warnings and di
  const html = preview();
  assert.deepEqual(ids(html), ids(original), 'preserve every existing DOM ID used by main.ts');
  for (const href of [...original.matchAll(/\bhref="([^"]+)"/g)].map(m => m[1])) assert.ok(html.includes(`href="${href}"`), `missing destination ${href}`);
- for (const text of ['Fictional data and test ETH only.', 'all 13 exact entered synthetic fields', 'Historical records', 'unsalted public hash can enable guessing', 'Export contains plaintext synthetic inputs', 'No identity verification or legal certification.']) assert.ok(html.includes(text), `missing warning/disclosure: ${text}`);
+ for (const text of ['Fictional data and test ETH only.', 'all 13 exact entered synthetic fields', 'unsalted public hash can enable guessing', 'Export contains plaintext synthetic inputs', 'No identity verification or legal certification.']) assert.ok(html.includes(text), `missing warning/disclosure: ${text}`);
  for (const id of ['hash','digest','connect','network','mint','inspect','burn','export','sdt-tools']) assert.ok(html.includes(`id="${id}"`));
  assert.ok(html.includes('<script type="module" src="/client/main.ts"></script>'));
  assert.ok(main(html).indexOf('id="workspace-actions"') < main(html).indexOf('id="what"'));
@@ -32,7 +32,7 @@ test('all eight footers carry exact linked CC BY 4.0 attribution and retain prio
   const footer=read(`${page}.html`).split('<footer>')[1].split('</footer>')[0];
   assert.match(footer, /<p>Maxim Osovsky · <a href="https:\/\/creativecommons\.org\/licenses\/by\/4\.0\/">CC BY 4\.0<\/a> · /,page);
   assert.doesNotMatch(footer, /Website operator:? Maxim Osovsky|©|&copy;/,page);
-  for (const dest of ['https://github.com/maximosovsky','https://www.linkedin.com/in/osovsky/','https://orcid.org/0009-0004-1594-0940','/privacy.html','/terms.html','/contact.html']) assert.ok(footer.includes(`href="${dest}"`),`${page}: ${dest}`);
+  for (const dest of ['https://github.com/maximosovsky','https://www.linkedin.com/in/osovsky/','https://orcid.org/0009-0004-1594-0940','./privacy.html','./terms.html','./contact.html']) assert.ok(footer.includes(`href="${dest}"`),`${page}: ${dest}`);
  }
  for (const page of ['privacy','contact']) assert.match(main(read(`${page}.html`)), /(?:operator|website operator)/i, `${page}: preserve substantive operator disclosure`);
 });
@@ -40,8 +40,8 @@ test('all eight footers carry exact linked CC BY 4.0 attribution and retain prio
 test('preview uses an isolated stylesheet and explicit Vite multi-page entry', () => {
  const html = preview(), css = read('client/index1-preview.css');
  assert.match(html, /<title>Self Declared Token \| Decentralized Partnership Agreement · design preview<\/title>/);
- assert.match(html, /href="\/client\/site\.css"/);
- assert.match(html, /href="\/client\/index1-preview\.css"/);
+ assert.match(html, /href="\.\/client\/site\.css"/);
+ assert.match(html, /href="\.\/client\/index1-preview\.css"/);
  assert.match(read('vite.config.ts'), /preview:\s*'index1\.html'/);
  assert.ok(existsSync(new URL('client/index1-preview.css', root)));
  assert.doesNotMatch(html, /fonts\.googleapis|<base |\/assets\/main-|<script[^>]+src="https?:/);

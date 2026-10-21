@@ -1,0 +1,4 @@
+# Preserve publication/evidence bytes and canonical SHA-256 on every platform.
+# Existing source includes mixed line endings; checkout must not normalize it.
+* -text
+*.mjs whitespace=cr-at-eol

@@ -21,9 +21,10 @@ test('SDT bank form is concise and the technical, export, and safety disclosures
  assert.match(form,/Only the predefined synthetic test values below are accepted\./);
  assert.doesNotMatch(form,/fictional fixture|Historical SDT v1|plaintext locally/);
  assert.match(research,/New SDT v2 hashes bind all 13 exact entered synthetic fields/);
- assert.match(research,/Historical records use only the original four fields and are unchanged/);
+ // Historical four-field limits now live in the substantive Terms, not the concise form.
+ assert.match(read('terms.html'), /Historical hashes commit only to four fields; do not reinterpret old records as thirteen-field declarations/);
  assert.match(research,/not independently verified and do not establish that a bank or transfer exists/);
- assert.match(html.split('<details class="legacy" id="sdt-tools">')[1],/Never enter real identity or banking details/);
+ assert.match(html.split('<details id="sdt-tools">')[1],/Never enter real identity or banking details/);
  assert.match(exportSection,/<button id="export">Export synthetic fields locally<\/button><p>Export contains plaintext synthetic inputs/);
  assert.match(exportSection,/a hash is not encryption or a backup/i);
  assert.doesNotMatch(exportSection,/all 13 exact entered synthetic fields/);
